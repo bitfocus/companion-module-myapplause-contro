@@ -1,0 +1,287 @@
+{
+    "msg": {
+        "fontsize": [
+            "{MESSAGES_FONT_SIZE: n[0]}"
+        ],
+        "outline": [
+            "{MESSAGES_TEXT_OUTLINE: n[0]}"
+        ],
+        "shadow": [
+            "{MESSAGES_TEXT_SHADOW: n[0]}"
+        ],
+        "stroke": [
+            "{MESSAGES_TEXT_STROKE: n[0]}"
+        ],
+        "distance": [
+            "{MESSAGES_MARGIN_BOTTOM: n[0]}"
+        ],
+        "fontweight": [
+            "{MESSAGES_FONT_WEIGHT: n[0]}"
+        ],
+        "delay_ms": [
+            "{MESSAGES_DELAY: n[0]}"
+        ],
+        "on": [
+            "{MESSAGES_ENABLED: 1}"
+        ],
+        "off": [
+            "{MESSAGES_ENABLED: 0}"
+        ],
+        "area": [
+            "{MESSAGES_ROW_START: n[0], MESSAGES_COLUMN_START: n[1], MESSAGES_ROW_END: n[2], MESSAGES_COLUMN_END: n[3]}"
+        ],
+        "toggle": [
+            "{TOGGLES: ['MESSAGES_ENABLED']}"
+        ]
+    },
+    "chart": {
+        "on": [
+            "{CHART_ENABLED: 1}"
+        ],
+        "off": [
+            "{CHART_ENABLED: 0}"
+        ],
+        "toggle": [
+            "{TOGGLES: ['CHART_ENABLED']}"
+        ],
+        "area": [
+            "{CHART_ROW_START: n[0], CHART_COLUMN_START: n[1], CHART_ROW_END: n[2], CHART_COLUMN_END: n[3]}"
+        ]
+    },
+    "image": {
+        "on": [
+            "{SHOW_BACKGROUND_IMAGE: 1}"
+        ],
+        "off": [
+            "{SHOW_BACKGROUND_IMAGE: 0}"
+        ],
+        "toggle": [
+            "{TOGGLES: ['SHOW_BACKGROUND_IMAGE']}"
+        ]
+    },
+    "video": {
+        "area": [
+            "{VIDEO_STRIPE_ROW_START: n[0], VIDEO_STRIPE_COLUMN_START: n[1], VIDEO_STRIPE_ROW_END: n[2], VIDEO_STRIPE_COLUMN_END: n[3]}"
+        ],
+        "speed": [
+            "{VIDEO_SPEED: n[0]}"
+        ],
+        "animation": {
+            "on": [
+                "{animatedVideoEnabled: 1}"
+            ],
+            "off": [
+                "{animatedVideoEnabled: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['animatedVideoEnabled']}"
+            ]
+        },
+        "on": [
+            "{VIDEO_ENABLED: 1}"
+        ],
+        "off": [
+            "{VIDEO_ENABLED: 0}"
+        ],
+        "toggle": [
+            "{TOGGLES: ['VIDEO_ENABLED']}"
+        ],
+        "vert": [
+            "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'VERT', VIDEO_STRIPE_COLUMN_START: 97, VIDEO_STRIPE_ROW_START: 1, EMOJI_ROW_END: 101}"
+        ],
+        "horiz": [
+            "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'HORIZ', VIDEO_STRIPE_COLUMN_START: 1, VIDEO_STRIPE_ROW_START: 90, EMOJI_ROW_END: 90}"
+        ],
+        "matrix": [
+            "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'MATRIX'}"
+        ],
+        "special": [
+            "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'URL'}"
+        ]
+    },
+    "pano": {
+        "raw": [
+            "{[n[0]]: n[1]||0}"
+        ],
+        "hexcolor": [
+            "{PANORAMA_BG_COLOR: '#' + n[0]}"
+        ],
+        "color": [
+            "{PANORAMA_BG_COLOR: n[0]}"
+        ],
+        "green": [
+            "{PANORAMA_BG_COLOR: '#00b140'}"
+        ],
+        "black": [
+            "{PANORAMA_BG_COLOR: 'black'}"
+        ]
+    },
+    "emoji": {
+        "area": [
+            "{EMOJI_ROW_START: n[0], EMOJI_COLUMN_START: n[1], EMOJI_ROW_END: n[2], EMOJI_COLUMN_END: n[3]}"
+        ],
+        "smooth": {
+            "on": [
+                "{EMOJI_SMOOTH_ANIMATION: 1}"
+            ],
+            "off": [
+                "{EMOJI_SMOOTH_ANIMATION: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['EMOJI_SMOOTH_ANIMATION']}"
+            ]
+        },
+        "hometeam": {
+            "on": [
+                "{EMOJI_NO_HOME: 1}"
+            ],
+            "off": [
+                "{EMOJI_NO_HOME: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['EMOJI_NO_HOME']}"
+            ]
+        },
+        "awayteam": {
+            "on": [
+                "{EMOJI_NO_GUEST: 1}"
+            ],
+            "off": [
+                "{EMOJI_NO_GUEST: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['EMOJI_NO_GUEST']}"
+            ]
+        },
+        "fade": {
+            "on": [
+                "{EMOJI_FADE_OUT: 1}"
+            ],
+            "off": [
+                "{EMOJI_FADE_OUT: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['EMOJI_FADE_OUT']}"
+            ]
+        },
+        "storm": {
+            "on": [
+                "{EMOJI_STORM: 1}"
+            ],
+            "off": [
+                "{EMOJI_STORM: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['EMOJI_STORM']}"
+            ]
+        },
+        "soundbuttons": {
+            "on": [
+                "{SHOW_ENGAGEMENT_EMOJIS: 1}"
+            ],
+            "off": [
+                "{SHOW_ENGAGEMENT_EMOJIS: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['SHOW_ENGAGEMENT_EMOJIS']}"
+            ]
+        },
+        "on": [
+            "{EMOJIS_ENABLED: 1}"
+        ],
+        "off": [
+            "{EMOJIS_ENABLED: 0}"
+        ],
+        "toggle": [
+            "{TOGGLES: ['EMOJIS_ENABLED']}"
+        ],
+        "multiplier": [
+            "{EMOJI_MULTIPLIER: n[0]}"
+        ],
+        "maxTotal": [
+            "{MAX_EMOJI_COUNT: n[0]}"
+        ],
+        "maxPerRound": [
+            "{MAX_EMOJI_PER_ROUND_COUNT: n[0]}"
+        ],
+        "size": [
+            "{EMOJI_MIN_SIZE: 0.50 + Math.floor(n[0]) * 0.02}",
+            "{EMOJI_MAX_SIZE: 1 + Math.floor(n[0]) * 0.040}"
+        ],
+        "fullscreenvib": [
+            "{EMOJI_ROW_START: 0, EMOJI_COLUMN_START: 0, EMOJI_ROW_END: 101, EMOJI_COLUMN_END: 101}",
+            "[102, [1, 0, 0, 0]]"
+        ]
+    },
+    "app": {
+        "hide": [
+            "[33, [2**(n[0]-1), 0, 0, 0]]"
+        ],
+        "show": [
+            "[33, [0, 2**(n[0]-1), 0, 0]]"
+        ],
+        "raw": [
+            "[n[0], [n[1]||0, n[2]||0, n[3]||0, n[4]||0]]"
+        ],
+        "trigger": [
+            "[30, [2**(n[0]-1), 0, 0, 0]]"
+        ],
+        "shakeon": [
+            "[33, [0, 0, 2**(n[0]-1), 0]]"
+        ],
+        "noshake": [
+            "[33, [0, 0, 0, 2**(n[0]-1)]]"
+        ],
+        "style": [
+            "[101, [n[0], 0, 0, 0]]"
+        ],
+        "showmask": [
+            "[22, [n[0], 0, 0, 0]]"
+        ],
+        "shakemask": [
+            "[21, [n[0], 0, 0, 0]]"
+        ],
+        "vibrate": [
+            "[102, [1, 0, 0, 0]]"
+        ],
+        "autovibrate": [
+            "[102, [129, 0, 0, 0]]"
+        ],
+        "stopvibrate": [
+            "[102, [0, 0, 0, 0]]"
+        ],
+        "beepA": [
+            "[102, [10, 0, 0, 0]]"
+        ],
+        "beepB": [
+            "[102, [11, 0, 0, 0]]"
+        ],
+        "reload": [
+            "[102, [13, 0, 0, 0]]"
+        ],
+        "reloadosc": [
+            "[102, [14, 0, 0, 0]]"
+        ]
+    },
+    "config": {
+        "dump": [
+            "{DUMP_CONFIG: 1}"
+        ],
+        "show": {
+            "on": [
+                "{CONFIG_DISPLAY_ENABLED: 1}"
+            ],
+            "off": [
+                "{CONFIG_DISPLAY_ENABLED: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['CONFIG_DISPLAY_ENABLED']}"
+            ]
+        }
+    },
+    "viktor": {
+        "showoff": [
+            "{EMOJIS_ENABLED: n[0]}"
+        ]
+    }
+}
