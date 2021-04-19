@@ -6,6 +6,7 @@ module.exports = {
 		const actions = {}
 		this.actionKeyToPath = {}
 
+		// Parse ROUTES.json to generate actions dynamically.
 		const extractActions = (obj, path = []) => {
 			if (!lodash.isObject(obj)) return
 
