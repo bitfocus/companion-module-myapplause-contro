@@ -38,7 +38,7 @@ module.exports = {
 	},
 
 	createPreset({ id, category, text, icon, actions = [], releaseActions = [], feedbacks = [] }) {
-		text = text
+		altText = text
 			.replace(/\/on$/, ' ✔️')
 			.replace(/\/off$/, ' ❌')
 			.replaceAll('/', ' ')
@@ -64,11 +64,11 @@ module.exports = {
 		return {
 			id: id,
 			category: category,
-			label: text,
+			label: text.replaceAll('/', ' '),
 			bank: {
 				style: 'text',
-				text: icon ? '' : text,
-				size: size(text),
+				text: icon ? '' : altText,
+				size: size(altText),
 				latch: !lodash.isEmpty(releaseActions),
 				png64: icon || icons['default'],
 				alignment: 'center:top',

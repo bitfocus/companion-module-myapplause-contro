@@ -1,4 +1,101 @@
 {
+    "image": {
+        "on": [
+            "{SHOW_BACKGROUND_IMAGE: 1}"
+        ],
+        "off": [
+            "{SHOW_BACKGROUND_IMAGE: 0}"
+        ],
+        "toggle": [
+            "{TOGGLES: ['SHOW_BACKGROUND_IMAGE']}"
+        ]
+    },
+    "emoji": {
+        "on": [
+            "{EMOJIS_ENABLED: 1}"
+        ],
+        "off": [
+            "{EMOJIS_ENABLED: 0}"
+        ],
+        "toggle": [
+            "{TOGGLES: ['EMOJIS_ENABLED']}"
+        ],
+        "area": [
+            "{EMOJI_ROW_START: n[0], EMOJI_COLUMN_START: n[1], EMOJI_ROW_END: n[2], EMOJI_COLUMN_END: n[3]}"
+        ],
+        "storm": {
+            "on": [
+                "{EMOJI_STORM: 1}"
+            ],
+            "off": [
+                "{EMOJI_STORM: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['EMOJI_STORM']}"
+            ]
+        },
+        "allbuttons": {
+            "on": [
+                "{SHOW_ENGAGEMENT_EMOJIS: 1}"
+            ],
+            "off": [
+                "{SHOW_ENGAGEMENT_EMOJIS: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['SHOW_ENGAGEMENT_EMOJIS']}"
+            ]
+        },
+        "fade": {
+            "on": [
+                "{EMOJI_FADE_OUT: 1}"
+            ],
+            "off": [
+                "{EMOJI_FADE_OUT: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['EMOJI_FADE_OUT']}"
+            ]
+        },
+        "multiplier": [
+            "{EMOJI_MULTIPLIER: n[0]}"
+        ],
+        "maxTotal": [
+            "{MAX_EMOJI_COUNT: n[0]}"
+        ],
+        "maxPerRound": [
+            "{MAX_EMOJI_PER_ROUND_COUNT: n[0]}"
+        ],
+        "size": [
+            "{EMOJI_MIN_SIZE: 0.50 + Math.floor(n[0]) * 0.02}",
+            "{EMOJI_MAX_SIZE: 1 + Math.floor(n[0]) * 0.040}"
+        ],
+        "hometeam": {
+            "on": [
+                "{EMOJI_NO_HOME: 1}"
+            ],
+            "off": [
+                "{EMOJI_NO_HOME: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['EMOJI_NO_HOME']}"
+            ]
+        },
+        "awayteam": {
+            "on": [
+                "{EMOJI_NO_GUEST: 1}"
+            ],
+            "off": [
+                "{EMOJI_NO_GUEST: 0}"
+            ],
+            "toggle": [
+                "{TOGGLES: ['EMOJI_NO_GUEST']}"
+            ]
+        },
+        "fullscreenvib": [
+            "{EMOJI_ROW_START: 0, EMOJI_COLUMN_START: 0, EMOJI_ROW_END: 101, EMOJI_COLUMN_END: 101}",
+            "[102, [1, 0, 0, 0]]"
+        ]
+    },
     "msg": {
         "fontsize": [
             "{MESSAGES_FONT_SIZE: n[0]}"
@@ -48,17 +145,6 @@
             "{CHART_ROW_START: n[0], CHART_COLUMN_START: n[1], CHART_ROW_END: n[2], CHART_COLUMN_END: n[3]}"
         ]
     },
-    "image": {
-        "on": [
-            "{SHOW_BACKGROUND_IMAGE: 1}"
-        ],
-        "off": [
-            "{SHOW_BACKGROUND_IMAGE: 0}"
-        ],
-        "toggle": [
-            "{TOGGLES: ['SHOW_BACKGROUND_IMAGE']}"
-        ]
-    },
     "video": {
         "area": [
             "{VIDEO_STRIPE_ROW_START: n[0], VIDEO_STRIPE_COLUMN_START: n[1], VIDEO_STRIPE_ROW_END: n[2], VIDEO_STRIPE_COLUMN_END: n[3]}"
@@ -66,17 +152,6 @@
         "speed": [
             "{VIDEO_SPEED: n[0]}"
         ],
-        "animation": {
-            "on": [
-                "{animatedVideoEnabled: 1}"
-            ],
-            "off": [
-                "{animatedVideoEnabled: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['animatedVideoEnabled']}"
-            ]
-        },
         "on": [
             "{VIDEO_ENABLED: 1}"
         ],
@@ -114,103 +189,6 @@
         ],
         "black": [
             "{PANORAMA_BG_COLOR: 'black'}"
-        ]
-    },
-    "emoji": {
-        "area": [
-            "{EMOJI_ROW_START: n[0], EMOJI_COLUMN_START: n[1], EMOJI_ROW_END: n[2], EMOJI_COLUMN_END: n[3]}"
-        ],
-        "smooth": {
-            "on": [
-                "{EMOJI_SMOOTH_ANIMATION: 1}"
-            ],
-            "off": [
-                "{EMOJI_SMOOTH_ANIMATION: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['EMOJI_SMOOTH_ANIMATION']}"
-            ]
-        },
-        "hometeam": {
-            "on": [
-                "{EMOJI_NO_HOME: 1}"
-            ],
-            "off": [
-                "{EMOJI_NO_HOME: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['EMOJI_NO_HOME']}"
-            ]
-        },
-        "awayteam": {
-            "on": [
-                "{EMOJI_NO_GUEST: 1}"
-            ],
-            "off": [
-                "{EMOJI_NO_GUEST: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['EMOJI_NO_GUEST']}"
-            ]
-        },
-        "fade": {
-            "on": [
-                "{EMOJI_FADE_OUT: 1}"
-            ],
-            "off": [
-                "{EMOJI_FADE_OUT: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['EMOJI_FADE_OUT']}"
-            ]
-        },
-        "storm": {
-            "on": [
-                "{EMOJI_STORM: 1}"
-            ],
-            "off": [
-                "{EMOJI_STORM: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['EMOJI_STORM']}"
-            ]
-        },
-        "soundbuttons": {
-            "on": [
-                "{SHOW_ENGAGEMENT_EMOJIS: 1}"
-            ],
-            "off": [
-                "{SHOW_ENGAGEMENT_EMOJIS: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['SHOW_ENGAGEMENT_EMOJIS']}"
-            ]
-        },
-        "on": [
-            "{EMOJIS_ENABLED: 1}"
-        ],
-        "off": [
-            "{EMOJIS_ENABLED: 0}"
-        ],
-        "toggle": [
-            "{TOGGLES: ['EMOJIS_ENABLED']}"
-        ],
-        "multiplier": [
-            "{EMOJI_MULTIPLIER: n[0]}"
-        ],
-        "maxTotal": [
-            "{MAX_EMOJI_COUNT: n[0]}"
-        ],
-        "maxPerRound": [
-            "{MAX_EMOJI_PER_ROUND_COUNT: n[0]}"
-        ],
-        "size": [
-            "{EMOJI_MIN_SIZE: 0.50 + Math.floor(n[0]) * 0.02}",
-            "{EMOJI_MAX_SIZE: 1 + Math.floor(n[0]) * 0.040}"
-        ],
-        "fullscreenvib": [
-            "{EMOJI_ROW_START: 0, EMOJI_COLUMN_START: 0, EMOJI_ROW_END: 101, EMOJI_COLUMN_END: 101}",
-            "[102, [1, 0, 0, 0]]"
         ]
     },
     "app": {
@@ -279,7 +257,7 @@
             ]
         }
     },
-    "viktor": {
+    "viktors": {
         "showoff": [
             "{EMOJIS_ENABLED: n[0]}"
         ]
