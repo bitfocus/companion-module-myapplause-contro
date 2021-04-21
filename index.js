@@ -24,18 +24,26 @@ class instance extends instance_skel {
 		this.initActions = this.initActions.bind(this)
 		this.action = this.action.bind(this)
 		this.initFeedbacks = this.initFeedbacks.bind(this)
+		this.initButtonColors = this.initButtonColors.bind(this)
 		this.checkAllFeedbacks = this.checkAllFeedbacks.bind(this)
 		this.initPresets = this.initPresets.bind(this)
 		this.getConfigAndCheckFeedbacks = this.getConfigAndCheckFeedbacks.bind(this)
 
-		this.config = config
 		// Use either newer downloaded ROUTES or use
 		// the one delivered with the module.
 		this.routes = this.config.ROUTES || ROUTES
 
-		this.actionState = {}
+		this.BUTTON_COLOR_ON = '#0b730d'
+		this.BUTTON_COLOR_OFF = '#0000ff'
+		this.BUTTON_COLOR_ERROR = '#ff00ff'
+
 		this.feedbackKeys = []
 		this.lastAction = {}
+	}
+
+	updateConfig(config) {
+		this.config = config
+		this.initButtonColors()
 	}
 
 	init() {
@@ -44,10 +52,26 @@ class instance extends instance_skel {
 
 		this.initActions()
 		this.status(isValidHttpUrl(this.config.url) ? this.STATUS_OK : this.STATUS_ERROR)
+		this.initButtonColors()
 		this.initFeedbacks()
 		this.initPresets()
 		this.getConfigAndCheckFeedbacks()
 		this.downloadROUTES()
+	}
+
+	initButtonColors() {
+		const hexStringToRgb = (hexString, defaultHexString) => {
+			var bigint = parseInt(hexString.replace('#', ''), 16) || parseInt(defaultHexString.replace('#', ''), 16)
+			var r = (bigint >> 16) & 255
+			var g = (bigint >> 8) & 255
+			var b = bigint & 255
+
+			return this.rgb(r, g, b)
+		}
+
+		this.button_color_on = hexStringToRgb(this.config.button_color_on, this.BUTTON_COLOR_ON)
+		this.button_color_off = hexStringToRgb(this.config.button_color_off, this.BUTTON_COLOR_OFF)
+		this.button_color_error = hexStringToRgb(this.config.button_color_error, this.BUTTON_COLOR_ERROR)
 	}
 
 	downloadROUTES() {
@@ -114,8 +138,26 @@ class instance extends instance_skel {
 				type: 'textinput',
 				id: 'url',
 				label: 'URL',
-				width: 6,
+				width: 12,
 				default: '',
+			},
+			{
+				type: 'textinput',
+				label: 'Button Color (HEX): Success - enabled',
+				id: 'button_color_on',
+				default: this.BUTTON_COLOR_ON,
+			},
+			{
+				type: 'textinput',
+				label: 'Button Color (HEX): Success - disabled',
+				id: 'button_color_off',
+				default: this.BUTTON_COLOR_OFF,
+			},
+			{
+				type: 'textinput',
+				label: 'Button Color (HEX): Error',
+				id: 'button_color_error',
+				default: this.BUTTON_COLOR_ERROR,
 			},
 		]
 	}

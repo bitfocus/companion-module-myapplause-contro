@@ -13,10 +13,10 @@ module.exports = {
 					options: [],
 					callback: (feedback, bank) => {
 						const { successful, browserConfig } = this.lastAction
-						if (successful == false) return { bgcolor: this.rgb(255, 0, 255) }
+						if (successful == false) return { bgcolor: this.button_color_error }
 						const toggle = this.actions[key].toggles[0]
 						const on = browserConfig[toggle]
-						return { bgcolor: on ? this.rgb(11, 115, 13) : this.rgb(0, 0, 255) }
+						return { bgcolor: on ? this.button_color_on : this.button_color_off }
 					},
 				}
 			} else {
@@ -26,9 +26,8 @@ module.exports = {
 					options: this.actions[key].options,
 					callback: (feedback, bank) => {
 						const { successful, browserConfig } = this.lastAction
-						if (successful == false) return { bgcolor: this.rgb(255, 0, 255) }
-
-						const params = Object.keys(feedback.options)
+						if (successful == false) return { bgcolor: this.button_color_error }
+						const params = Object.keys(feedback.options || {})
 							.sort()
 							.map((key) => feedback.options[key])
 						const expectedConfig = this.actions[key].func(params)
@@ -36,8 +35,7 @@ module.exports = {
 							(key) => expectedConfig[key] == browserConfig[key]
 						)
 						if (!expectedConfigMatchesBrowserConfig) return
-
-						return { bgcolor: key.endsWith('off') ? this.rgb(0, 0, 255) : this.rgb(11, 115, 13) }
+						return { bgcolor: this.button_color_on }
 					},
 				}
 			}
