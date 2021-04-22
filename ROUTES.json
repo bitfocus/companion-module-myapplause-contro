@@ -1,13 +1,13 @@
 {
     "image": {
+        "toggle": [
+            "{TOGGLES: ['SHOW_BACKGROUND_IMAGE']}"
+        ],
         "on": [
             "{SHOW_BACKGROUND_IMAGE: 1}"
         ],
         "off": [
             "{SHOW_BACKGROUND_IMAGE: 0}"
-        ],
-        "toggle": [
-            "{TOGGLES: ['SHOW_BACKGROUND_IMAGE']}"
         ]
     },
     "emoji": {

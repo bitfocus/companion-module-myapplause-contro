@@ -8,31 +8,29 @@ module.exports = {
 			const path = this.actionKeyToPath[key]
 			const icon = icons[key]
 
-			const preset = this.createPreset({
+			const iconPreset = this.createPreset({
 				id: key,
-				category: path[0],
+				category: capitalizeFirstLetter(path[0]) + ' Commands (icon)',
+				text: key,
+				icon: icon,
+				actions: [key],
+				feedbacks: [key],
+			})
+			const textPreset = this.createPreset({
+				id: key,
+				category: capitalizeFirstLetter(path[0]) + ' Commands (text)',
 				text: key,
 				icon: undefined,
 				actions: [key],
 				feedbacks: [key],
 			})
-			presets.push({ ...preset, category: '_all' })
-			if (key.endsWith('/toggle')) presets.push({ ...preset, category: '_toggles' })
-			presets.push(preset)
 
-			if (icon) {
-				const preset = this.createPreset({
-					id: key,
-					category: path[0],
-					text: key,
-					icon: icon,
-					actions: [key],
-					feedbacks: [key],
-				})
-				presets.push({ ...preset, category: '_all' })
-				if (key.endsWith('/toggle')) presets.push({ ...preset, category: '_toggles' })
-				presets.push(preset)
-			}
+			presets.push({ ...iconPreset, category: 'All Commands (icon)' })
+			presets.push({ ...textPreset, category: 'All Commands (text)' })
+			if (key.endsWith('/toggle')) presets.push({ ...iconPreset, category: 'Toggle Commands (icon)' })
+			if (key.endsWith('/toggle')) presets.push({ ...textPreset, category: 'Toggle Commands (text)' })
+			presets.push(iconPreset)
+			presets.push(textPreset)
 		}
 		this.setPresetDefinitions(presets)
 	},
@@ -81,4 +79,8 @@ module.exports = {
 			feedbacks: feedbacks.map((type) => ({ type })),
 		}
 	},
+}
+
+function capitalizeFirstLetter(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1)
 }
