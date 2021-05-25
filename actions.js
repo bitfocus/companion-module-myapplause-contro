@@ -7,43 +7,63 @@ module.exports = {
 		this.actionKeyToPath = {}
 
 		// Parse ROUTES.json to generate actions dynamically.
-		const extractActions = (obj, path = []) => {
-			if (!lodash.isObject(obj)) return
+		const parseRoutes = (obj, path = []) => {
+			function isRouteConfig(obj) {
+				return obj.hasOwnProperty('commands') && lodash.isArray(obj.commands)
+			}
 
 			for (const key of Object.keys(obj)) {
-				const child = obj[key]
-				if (lodash.isString(child)) {
-					const key = path.join('/')
-					const label = path.join(' ')
-					const paramCount = (child.match(/n\[\d+\]/g) || []).length
+				const path_ = path.concat([key])
+				const childObj = obj[key]
+				if (!lodash.isObject(childObj)) return
 
-					const options = []
-					for (let i = 0; i < paramCount; i++) {
-						options.push({
-							type: 'textinput',
-							label: `Param ${i}`,
-							id: `param${i}`,
-							regex: this.REGEX_SOMETHING,
-						})
+				if (isRouteConfig(childObj)) {
+					let { commands, tooltip = '', predefines = {}, groups = [] } = childObj
+
+					// get number of params
+					const match = commands[0].match(/n\[\d+\]/g)
+					const paramCount = match ? match.length : 0
+
+					const actionKey = path_.join('/')
+					// Add null predefine if predefines is empty
+					if (lodash.isEmpty(predefines)) predefines[''] = []
+
+					for (const [predefineName, predefineParams] of Object.entries(predefines)) {
+						const predefineKey = actionKey + ' ' + predefineName
+						const label = path_.join(' ') + ' ' + predefineName
+
+						const options = []
+						for (let i = 0; i < paramCount; i++) {
+							options.push({
+								type: 'textinput',
+								label: `Param ${i}`,
+								id: `param${i}`,
+								regex: this.REGEX_SOMETHING,
+								default: predefineParams[i],
+							})
+						}
+
+						actions[predefineKey] = {
+							actionKey: actionKey,
+							label: label,
+							options: options,
+							func: new Function('n', 'return ' + commands[0]),
+							tooltip: tooltip,
+							groups: groups,
+							predefineName: predefineName,
+						}
+
+						this.actionKeyToPath[predefineKey] = path_
+						if (commands[0].includes('TOGGLES: ')) {
+							actions[predefineKey].toggles = actions[predefineKey].func().TOGGLES
+						}
 					}
-
-					actions[key] = {
-						label: label,
-						options: options,
-						func: new Function('n', 'return ' + child),
-					}
-
-					if (child.includes('TOGGLES: ')) {
-						actions[key].toggles = actions[key].func().TOGGLES
-					}
-
-					this.actionKeyToPath[key] = path
 				} else {
-					extractActions(child, path.concat([key]))
+					parseRoutes(childObj, path_)
 				}
 			}
 		}
-		extractActions(this.routes)
+		parseRoutes(this.routes)
 
 		this.actions = actions
 		this.setActions(actions)
@@ -54,6 +74,8 @@ module.exports = {
 		const params = Object.entries(action.options || {})
 			.sort(([k0, v0], [k1, v1]) => k0 - k1)
 			.map(([k, v]) => v || 0)
+			.map(encodeURIComponent)
+
 		let url = this.config.url
 		if (!url.endsWith('/')) url = url + '/'
 		url = url + path.concat(params).join('/')

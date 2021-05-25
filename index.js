@@ -109,7 +109,22 @@ class instance extends instance_skel {
 				}
 				this.checkAllFeedbacks()
 			} catch (error) {
-				this.log('warn', 'Initial MyApplause state was not transmitted.')
+				const regex = /\/rc\/pid\/(\w+)\/(\w+)\//
+				const match = url.match(regex)
+				if (match) {
+					const eventId = match[1]
+					const pid = match[2]
+					const panoramaUrl = `https://macs.myapplause.app/id/${eventId}/panorama?pid=${pid}`
+					this.log(
+						'warn',
+						`Initial MyApplause state was not transmitted. This URL needs to be open in a browser: ${panoramaUrl}`
+					)
+				} else {
+					this.log(
+						'warn',
+						'Initial MyApplause state was not transmitted. Is the MyApplause Panorama opened in a browser?'
+					)
+				}
 			}
 
 			this.status(successful ? this.STATUS_OK : this.STATUS_ERROR)

@@ -4,47 +4,89 @@ const icons = require('./icons')
 module.exports = {
 	initPresets() {
 		var presets = []
-		for (const key of Object.keys(this.actions)) {
-			const path = this.actionKeyToPath[key]
-			const icon = icons[key]
+		for (const predefineKey of Object.keys(this.actions)) {
+			const action = this.actions[predefineKey]
+			const actionKey = action.actionKey
+			const predefineName = action.predefineName
+			const path = this.actionKeyToPath[predefineKey]
+			const icon = icons[action.actionKey]
+			const tooltip = action.tooltip
+			const additionalCategories = action.groups
 
 			const iconPreset = this.createPreset({
-				id: key,
-				category: capitalizeFirstLetter(path[0]) + ' Commands (icon)',
-				text: key,
+				id: predefineKey,
+				category: capitalizeFirstLetter(path[0]) + ' Commands (Icon)',
+				actionKey: actionKey,
+				predefineName: predefineName,
 				icon: icon,
-				actions: [key],
-				feedbacks: [key],
+				tooltip: tooltip,
+				actions: [predefineKey],
+				feedbacks: [predefineKey],
 			})
 			const textPreset = this.createPreset({
-				id: key,
-				category: capitalizeFirstLetter(path[0]) + ' Commands (text)',
-				text: key,
+				id: predefineKey,
+				category: capitalizeFirstLetter(path[0]) + ' Commands (Text)',
+				actionKey: actionKey,
+				predefineName: predefineName,
 				icon: undefined,
-				actions: [key],
-				feedbacks: [key],
+				tooltip: tooltip,
+				actions: [predefineKey],
+				feedbacks: [predefineKey],
 			})
 
-			presets.push({ ...iconPreset, category: 'All Commands (icon)' })
-			presets.push({ ...textPreset, category: 'All Commands (text)' })
-			if (key.endsWith('/toggle')) presets.push({ ...iconPreset, category: 'Toggle Commands (icon)' })
-			if (key.endsWith('/toggle')) presets.push({ ...textPreset, category: 'Toggle Commands (text)' })
-			presets.push(iconPreset)
-			presets.push(textPreset)
+			const actionName = path[path.length - 1]
+			if (actionName === 'on' || actionName === 'off') {
+				presets.push({ ...iconPreset, category: 'NoToggle Commands (Icon)' })
+				presets.push({ ...textPreset, category: 'NoToggle Commands (Text)' })
+				additionalCategories.forEach((category) => {
+					presets.push({ ...iconPreset, category: `${category} Commands (Icon)` })
+					presets.push({ ...textPreset, category: `${category} Commands (Text)` })
+				})
+			} else {
+				presets.push({ ...iconPreset, category: 'All Commands (Icon)' })
+				presets.push({ ...textPreset, category: 'All Commands (Text)' })
+				if (predefineKey.endsWith('/toggle ')) presets.push({ ...iconPreset, category: 'Toggle Commands (Icon)' })
+				if (predefineKey.endsWith('/toggle ')) presets.push({ ...textPreset, category: 'Toggle Commands (Text)' })
+				presets.push(iconPreset)
+				presets.push(textPreset)
+				additionalCategories.forEach((category) => {
+					presets.push({ ...iconPreset, category: `${category} Commands (Icon)` })
+					presets.push({ ...textPreset, category: `${category} Commands (Text)` })
+				})
+			}
 		}
 		this.setPresetDefinitions(presets)
 	},
 
-	createPreset({ id, category, text, icon, actions = [], releaseActions = [], feedbacks = [] }) {
-		altText = text
-			.replace(/\/on$/, ' ✔️')
-			.replace(/\/off$/, ' ❌')
-			.replaceAll('/', ' ')
-			.replaceAll('Total', ' Σ')
-			.replace(/^app/, '📱')
-			.replace(/^emoji/, '🙂')
-			.replaceAll('reload', '🔃 ')
-			.replace(/toggle$/, '✔️/❌')
+	createPreset({
+		id,
+		category,
+		tooltip,
+		actionKey,
+		predefineName,
+		icon,
+		actions = [],
+		releaseActions = [],
+		feedbacks = [],
+	}) {
+		altText =
+			actionKey
+				.replace(/\/on$/, ' ✔️')
+				.replace(/\/off$/, ' ❌')
+				.replace(/\//g, ' ')
+				.replace(/Total/g, ' Σ')
+				.replace(/^app/, '📱')
+				.replace(/^emoji/, '🙂')
+				.replace(/reload/g, '🔃 ')
+				.replace(/toggle$/, '✔️/❌') +
+			' ' +
+			predefineName
+
+		let shortText = ''
+		if (actionKey.match(/.*toggle$/)) shortText = '✔️/❌'
+		else if (actionKey.match(/.*\/on$/)) shortactionKey = '✔️'
+		else if (actionKey.match(/.*\/off$/)) shortText = '❌'
+		shortText = shortText + ' ' + predefineName
 
 		function size(text) {
 			if (
@@ -62,14 +104,14 @@ module.exports = {
 		return {
 			id: id,
 			category: category,
-			label: text.replaceAll('/', ' '),
+			label: (tooltip || actionKey.replace(/\//g, ' ')) + ' ' + predefineName,
 			bank: {
 				style: 'text',
-				text: icon ? '' : altText,
-				size: size(altText),
+				text: icon ? shortText : altText,
+				size: icon ? size(shortText) : size(altText),
 				latch: !lodash.isEmpty(releaseActions),
 				png64: icon || icons['default'],
-				alignment: 'center:top',
+				alignment: icon ? 'center:bottom' : 'center:top',
 				pngalignment: 'center:center',
 				color: this.rgb(255, 255, 255),
 				bgcolor: this.rgb(0, 0, 0),

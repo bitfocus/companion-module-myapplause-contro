@@ -6,7 +6,7 @@ module.exports = {
 		const feedbacks = {}
 
 		for (const key of Object.keys(this.actions)) {
-			if (key.endsWith('/toggle')) {
+			if (key.endsWith('/toggle ')) {
 				feedbacks[key] = {
 					label: key,
 					description: key,

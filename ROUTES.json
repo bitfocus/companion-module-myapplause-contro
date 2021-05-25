@@ -1,265 +1,853 @@
 {
     "image": {
-        "toggle": [
-            "{TOGGLES: ['SHOW_BACKGROUND_IMAGE']}"
-        ],
-        "on": [
-            "{SHOW_BACKGROUND_IMAGE: 1}"
-        ],
-        "off": [
-            "{SHOW_BACKGROUND_IMAGE: 0}"
-        ]
+        "toggle": {
+            "commands": [
+                "{TOGGLES: ['SHOW_BACKGROUND_IMAGE']}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "on": {
+            "commands": [
+                "{SHOW_BACKGROUND_IMAGE: 1}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "off": {
+            "commands": [
+                "{SHOW_BACKGROUND_IMAGE: 0}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "url": {
+            "commands": [
+                "{BACKGROUND_IMAGE_URL: n[0]}"
+            ],
+            "tooltip": "Sets background image to url",
+            "predefines": {
+                "Stage": [
+                    "https://lic.hackcare.net/public/meinapplaus/images/Panorama_Stage2.jpg"
+                ],
+                "Stadion": [
+                    "https://lic.hackcare.net/public/meinapplaus/images/Panorama_Stadion.jpg"
+                ]
+            },
+            "groups": [
+                "QuickStart"
+            ]
+        }
     },
     "emoji": {
-        "on": [
-            "{EMOJIS_ENABLED: 1}"
-        ],
-        "off": [
-            "{EMOJIS_ENABLED: 0}"
-        ],
-        "toggle": [
-            "{TOGGLES: ['EMOJIS_ENABLED']}"
-        ],
-        "area": [
-            "{EMOJI_ROW_START: n[0], EMOJI_COLUMN_START: n[1], EMOJI_ROW_END: n[2], EMOJI_COLUMN_END: n[3]}"
-        ],
-        "storm": {
-            "on": [
-                "{EMOJI_STORM: 1}"
+        "on": {
+            "commands": [
+                "{EMOJIS_ENABLED: 1}"
             ],
-            "off": [
-                "{EMOJI_STORM: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['EMOJI_STORM']}"
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
             ]
+        },
+        "off": {
+            "commands": [
+                "{EMOJIS_ENABLED: 0}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "toggle": {
+            "commands": [
+                "{TOGGLES: ['EMOJIS_ENABLED']}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "area": {
+            "commands": [
+                "{EMOJI_ROW_START: n[0], EMOJI_COLUMN_START: n[1], EMOJI_ROW_END: n[2], EMOJI_COLUMN_END: n[3]}"
+            ],
+            "tooltip": "area test tooltip",
+            "predefines": {
+                "Left": [
+                    1,
+                    5,
+                    101,
+                    15
+                ],
+                "100%": [
+                    1,
+                    1,
+                    101,
+                    101
+                ],
+                "Right": [
+                    1,
+                    85,
+                    101,
+                    95
+                ]
+            },
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "storm": {
+            "on": {
+                "commands": [
+                    "{EMOJI_STORM: 1}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "off": {
+                "commands": [
+                    "{EMOJI_STORM: 0}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "toggle": {
+                "commands": [
+                    "{TOGGLES: ['EMOJI_STORM']}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            }
         },
         "allbuttons": {
-            "on": [
-                "{SHOW_ENGAGEMENT_EMOJIS: 1}"
-            ],
-            "off": [
-                "{SHOW_ENGAGEMENT_EMOJIS: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['SHOW_ENGAGEMENT_EMOJIS']}"
-            ]
+            "on": {
+                "commands": [
+                    "{SHOW_ENGAGEMENT_EMOJIS: 1}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "off": {
+                "commands": [
+                    "{SHOW_ENGAGEMENT_EMOJIS: 0}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "toggle": {
+                "commands": [
+                    "{TOGGLES: ['SHOW_ENGAGEMENT_EMOJIS']}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            }
         },
         "fade": {
-            "on": [
-                "{EMOJI_FADE_OUT: 1}"
+            "on": {
+                "commands": [
+                    "{EMOJI_FADE_OUT: 1}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "off": {
+                "commands": [
+                    "{EMOJI_FADE_OUT: 0}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "toggle": {
+                "commands": [
+                    "{TOGGLES: ['EMOJI_FADE_OUT']}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            }
+        },
+        "multiply": {
+            "commands": [
+                "{EMOJI_MULTIPLIER: n[0]}"
             ],
-            "off": [
-                "{EMOJI_FADE_OUT: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['EMOJI_FADE_OUT']}"
+            "tooltip": "",
+            "predefines": {
+                "x0.25": [
+                   0.25 
+                ],
+                "x0.5": [
+                   0.5 
+                ],
+                "x1": [
+                   1 
+                ],
+                "x2": [
+                   2 
+                ]
+            },
+            "groups": [
+                "QuickStart"
             ]
         },
-        "multiplier": [
-            "{EMOJI_MULTIPLIER: n[0]}"
-        ],
-        "maxTotal": [
-            "{MAX_EMOJI_COUNT: n[0]}"
-        ],
-        "maxPerRound": [
-            "{MAX_EMOJI_PER_ROUND_COUNT: n[0]}"
-        ],
-        "size": [
-            "{EMOJI_MIN_SIZE: 0.50 + Math.floor(n[0]) * 0.02}",
-            "{EMOJI_MAX_SIZE: 1 + Math.floor(n[0]) * 0.040}"
-        ],
-        "hometeam": {
-            "on": [
-                "{EMOJI_NO_HOME: 1}"
+        "maxTotal": {
+            "commands": [
+                "{MAX_EMOJI_COUNT: n[0]}"
             ],
-            "off": [
-                "{EMOJI_NO_HOME: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['EMOJI_NO_HOME']}"
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
             ]
+        },
+        "maxPerRound": {
+            "commands": [
+                "{MAX_EMOJI_PER_ROUND_COUNT: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "size": {
+            "commands": [
+                "{EMOJI_MIN_SIZE: 0.50 + Math.floor(n[0]) * 0.02}",
+                "{EMOJI_MAX_SI}ZE: 1 + Math.floor(n[0]) * 0.040}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "hometeam": {
+            "on": {
+                "commands": [
+                    "{EMOJI_NO_HOME: 1}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "off": {
+                "commands": [
+                    "{EMOJI_NO_HOME: 0}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "toggle": {
+                "commands": [
+                    "{TOGGLES: ['EMOJI_NO_HOME']}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            }
         },
         "awayteam": {
-            "on": [
-                "{EMOJI_NO_GUEST: 1}"
-            ],
-            "off": [
-                "{EMOJI_NO_GUEST: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['EMOJI_NO_GUEST']}"
-            ]
+            "on": {
+                "commands": [
+                    "{EMOJI_NO_GUEST: 1}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "off": {
+                "commands": [
+                    "{EMOJI_NO_GUEST: 0}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "toggle": {
+                "commands": [
+                    "{TOGGLES: ['EMOJI_NO_GUEST']}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            }
         },
-        "fullscreenvib": [
-            "{EMOJI_ROW_START: 0, EMOJI_COLUMN_START: 0, EMOJI_ROW_END: 101, EMOJI_COLUMN_END: 101}",
-            "[102, [1, 0, 0, 0]]"
-        ]
+        "fullscreenvib": {
+            "commands": [
+                "{EMOJI_ROW_START: 0, EMOJI_COLUMN_START: 0, EMOJI_ROW_END: 101, EMOJI_COLUMN_END: 101}",
+                "[102, [1, 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        }
     },
     "msg": {
-        "fontsize": [
-            "{MESSAGES_FONT_SIZE: n[0]}"
-        ],
-        "outline": [
-            "{MESSAGES_TEXT_OUTLINE: n[0]}"
-        ],
-        "shadow": [
-            "{MESSAGES_TEXT_SHADOW: n[0]}"
-        ],
-        "stroke": [
-            "{MESSAGES_TEXT_STROKE: n[0]}"
-        ],
-        "distance": [
-            "{MESSAGES_MARGIN_BOTTOM: n[0]}"
-        ],
-        "fontweight": [
-            "{MESSAGES_FONT_WEIGHT: n[0]}"
-        ],
-        "delay_ms": [
-            "{MESSAGES_DELAY: n[0]}"
-        ],
-        "on": [
-            "{MESSAGES_ENABLED: 1}"
-        ],
-        "off": [
-            "{MESSAGES_ENABLED: 0}"
-        ],
-        "area": [
-            "{MESSAGES_ROW_START: n[0], MESSAGES_COLUMN_START: n[1], MESSAGES_ROW_END: n[2], MESSAGES_COLUMN_END: n[3]}"
-        ],
-        "toggle": [
-            "{TOGGLES: ['MESSAGES_ENABLED']}"
-        ]
+        "toggle": {
+            "commands": [
+                "{TOGGLES: ['MESSAGES_ENABLED']}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "on": {
+            "commands": [
+                "{MESSAGES_ENABLED: 1}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "off": {
+            "commands": [
+                "{MESSAGES_ENABLED: 0}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "area": {
+            "commands": [
+                "{MESSAGES_ROW_START: n[0], MESSAGES_COLUMN_START: n[1], MESSAGES_ROW_END: n[2], MESSAGES_COLUMN_END: n[3]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "fontsize": {
+            "commands": [
+                "{MESSAGES_FONT_SIZE: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "outline": {
+            "commands": [
+                "{MESSAGES_TEXT_OUTLINE: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "shadow": {
+            "commands": [
+                "{MESSAGES_TEXT_SHADOW: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "stroke": {
+            "commands": [
+                "{MESSAGES_TEXT_STROKE: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "distance": {
+            "commands": [
+                "{MESSAGES_MARGIN_BOTTOM: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "weight": {
+            "commands": [
+                "{MESSAGES_FONT_WEIGHT: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "delay": {
+            "commands": [
+                "{MESSAGES_DELAY: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        }
     },
     "chart": {
-        "on": [
-            "{CHART_ENABLED: 1}"
-        ],
-        "off": [
-            "{CHART_ENABLED: 0}"
-        ],
-        "toggle": [
-            "{TOGGLES: ['CHART_ENABLED']}"
-        ],
-        "area": [
-            "{CHART_ROW_START: n[0], CHART_COLUMN_START: n[1], CHART_ROW_END: n[2], CHART_COLUMN_END: n[3]}"
-        ]
+        "on": {
+            "commands": [
+                "{CHART_ENABLED: 1}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "off": {
+            "commands": [
+                "{CHART_ENABLED: 0}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "toggle": {
+            "commands": [
+                "{TOGGLES: ['CHART_ENABLED']}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "area": {
+            "commands": [
+                "{CHART_ROW_START: n[0], CHART_COLUMN_START: n[1], CHART_ROW_END: n[2], CHART_COLUMN_END: n[3]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        }
     },
     "video": {
-        "area": [
-            "{VIDEO_STRIPE_ROW_START: n[0], VIDEO_STRIPE_COLUMN_START: n[1], VIDEO_STRIPE_ROW_END: n[2], VIDEO_STRIPE_COLUMN_END: n[3]}"
-        ],
-        "speed": [
-            "{VIDEO_SPEED: n[0]}"
-        ],
-        "on": [
-            "{VIDEO_ENABLED: 1}"
-        ],
-        "off": [
-            "{VIDEO_ENABLED: 0}"
-        ],
-        "toggle": [
-            "{TOGGLES: ['VIDEO_ENABLED']}"
-        ],
-        "vert": [
-            "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'VERT', VIDEO_STRIPE_COLUMN_START: 97, VIDEO_STRIPE_ROW_START: 1, EMOJI_ROW_END: 101}"
-        ],
-        "horiz": [
-            "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'HORIZ', VIDEO_STRIPE_COLUMN_START: 1, VIDEO_STRIPE_ROW_START: 90, EMOJI_ROW_END: 90}"
-        ],
-        "matrix": [
-            "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'MATRIX'}"
-        ],
-        "special": [
-            "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'URL'}"
-        ]
+        "area": {
+            "commands": [
+                "{VIDEO_STRIPE_ROW_START: n[0], VIDEO_STRIPE_COLUMN_START: n[1], VIDEO_STRIPE_ROW_END: n[2], VIDEO_STRIPE_COLUMN_END: n[3]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "speed": {
+            "commands": [
+                "{VIDEO_SPEED: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "on": {
+            "commands": [
+                "{VIDEO_ENABLED: 1}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "off": {
+            "commands": [
+                "{VIDEO_ENABLED: 0}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "toggle": {
+            "commands": [
+                "{TOGGLES: ['VIDEO_ENABLED']}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "vert": {
+            "commands": [
+                "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'VERT', VIDEO_STRIPE_COLUMN_START: 97, VIDEO_STRIPE_ROW_START: 1, EMOJI_ROW_END: 101}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "horiz": {
+            "commands": [
+                "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'HORIZ', VIDEO_STRIPE_COLUMN_START: 1, VIDEO_STRIPE_ROW_START: 90, EMOJI_ROW_END: 90}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "matrix": {
+            "commands": [
+                "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'MATRIX'}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "special": {
+            "commands": [
+                "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'URL'}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        }
     },
     "pano": {
-        "raw": [
-            "{[n[0]]: n[1]||0}"
-        ],
-        "hexcolor": [
-            "{PANORAMA_BG_COLOR: '#' + n[0]}"
-        ],
-        "color": [
-            "{PANORAMA_BG_COLOR: n[0]}"
-        ],
-        "green": [
-            "{PANORAMA_BG_COLOR: '#00b140'}"
-        ],
-        "black": [
-            "{PANORAMA_BG_COLOR: 'black'}"
-        ]
+        "raw": {
+            "commands": [
+                "{[n[0]]: n[1]||0}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "hexcolor": {
+            "commands": [
+                "{PANORAMA_BG_COLOR: '#' + n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "color": {
+            "commands": [
+                "{PANORAMA_BG_COLOR: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "green": {
+            "commands": [
+                "{PANORAMA_BG_COLOR: '#00b140'}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "black": {
+            "commands": [
+                "{PANORAMA_BG_COLOR: 'black'}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        }
     },
     "app": {
-        "hide": [
-            "[33, [2**(n[0]-1), 0, 0, 0]]"
-        ],
-        "show": [
-            "[33, [0, 2**(n[0]-1), 0, 0]]"
-        ],
-        "raw": [
-            "[n[0], [n[1]||0, n[2]||0, n[3]||0, n[4]||0]]"
-        ],
-        "trigger": [
-            "[30, [2**(n[0]-1), 0, 0, 0]]"
-        ],
-        "shakeon": [
-            "[33, [0, 0, 2**(n[0]-1), 0]]"
-        ],
-        "noshake": [
-            "[33, [0, 0, 0, 2**(n[0]-1)]]"
-        ],
-        "style": [
-            "[101, [n[0], 0, 0, 0]]"
-        ],
-        "showmask": [
-            "[22, [n[0], 0, 0, 0]]"
-        ],
-        "shakemask": [
-            "[21, [n[0], 0, 0, 0]]"
-        ],
-        "vibrate": [
-            "[102, [1, 0, 0, 0]]"
-        ],
-        "autovibrate": [
-            "[102, [129, 0, 0, 0]]"
-        ],
-        "stopvibrate": [
-            "[102, [0, 0, 0, 0]]"
-        ],
-        "beepA": [
-            "[102, [10, 0, 0, 0]]"
-        ],
-        "beepB": [
-            "[102, [11, 0, 0, 0]]"
-        ],
-        "reload": [
-            "[102, [13, 0, 0, 0]]"
-        ],
-        "reloadosc": [
-            "[102, [14, 0, 0, 0]]"
-        ]
+        "hide": {
+            "commands": [
+                "[33, [2**(n[0]-1), 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "show": {
+            "commands": [
+                "[33, [0, 2**(n[0]-1), 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "raw": {
+            "commands": [
+                "[n[0], [n[1]||0, n[2]||0, n[3]||0, n[4]||0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "trigger": {
+            "commands": [
+                "[30, [2**(n[0]-1), 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "shakeon": {
+            "commands": [
+                "[33, [0, 0, 2**(n[0]-1), 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "noshake": {
+            "commands": [
+                "[33, [0, 0, 0, 2**(n[0]-1)]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "style": {
+            "commands": [
+                "[101, [n[0], 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "showmask": {
+            "commands": [
+                "[22, [n[0], 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "shakemask": {
+            "commands": [
+                "[21, [n[0], 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "vibrate": {
+            "commands": [
+                "[102, [1, 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "autovibrate": {
+            "commands": [
+                "[102, [129, 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "stopvibrate": {
+            "commands": [
+                "[102, [0, 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "beepA": {
+            "commands": [
+                "[102, [10, 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "beepB": {
+            "commands": [
+                "[102, [11, 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
+        "reload": {
+            "commands": [
+                "[102, [13, 0, 0, 0]]"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        }
     },
     "config": {
-        "dump": [
-            "{DUMP_CONFIG: 1}"
-        ],
+        "dump": {
+            "commands": [
+                "{DUMP_CONFIG: 1}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        },
         "show": {
-            "on": [
-                "{CONFIG_DISPLAY_ENABLED: 1}"
+            "on": {
+                "commands": [
+                    "{CONFIG_DISPLAY_ENABLED: 1}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "off": {
+                "commands": [
+                    "{CONFIG_DISPLAY_ENABLED: 0}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            },
+            "toggle": {
+                "commands": [
+                    "{TOGGLES: ['CONFIG_DISPLAY_ENABLED']}"
+                ],
+                "tooltip": "",
+                "predefines": {},
+                "groups": [
+                    "QuickStart"
+                ]
+            }
+        },
+        "reloadosc": {
+            "commands": [
+                "[102, [14, 0, 0, 0]]"
             ],
-            "off": [
-                "{CONFIG_DISPLAY_ENABLED: 0}"
-            ],
-            "toggle": [
-                "{TOGGLES: ['CONFIG_DISPLAY_ENABLED']}"
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
             ]
         }
     },
     "viktors": {
-        "showoff": [
-            "{EMOJIS_ENABLED: n[0]}"
-        ]
+        "showoff": {
+            "commands": [
+                "{EMOJIS_ENABLED: n[0]}"
+            ],
+            "tooltip": "",
+            "predefines": {},
+            "groups": [
+                "QuickStart"
+            ]
+        }
     }
 }
