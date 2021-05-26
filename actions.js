@@ -71,6 +71,11 @@ module.exports = {
 	action(action) {
 		const key = action.action
 		const path = this.actionKeyToPath[key]
+		if (lodash.isEmpty(path)) {
+			this.log('warn', 'Corresponding action for key "' + key + '" could not be found.')
+			return
+		}
+
 		const params = Object.entries(action.options || {})
 			.sort(([k0, v0], [k1, v1]) => k0 - k1)
 			.map(([k, v]) => v || 0)

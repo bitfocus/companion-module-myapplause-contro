@@ -6,6 +6,7 @@ const presets = require('./presets')
 const actions = require('./actions')
 const feedbacks = require('./feedbacks')
 const ROUTES = require('./ROUTES.json')
+const ICONS = require('./ICONS.json')
 
 class instance extends instance_skel {
 	constructor(system, id, config) {
@@ -18,7 +19,7 @@ class instance extends instance_skel {
 		})
 
 		this.init = this.init.bind(this)
-		this.downloadROUTES = this.downloadROUTES.bind(this)
+		this.downloadConfig = this.downloadConfig.bind(this)
 		this.config_fields = this.config_fields.bind(this)
 		this.destroy = this.destroy.bind(this)
 		this.initActions = this.initActions.bind(this)
@@ -29,9 +30,10 @@ class instance extends instance_skel {
 		this.initPresets = this.initPresets.bind(this)
 		this.getConfigAndCheckFeedbacks = this.getConfigAndCheckFeedbacks.bind(this)
 
-		// Use either newer downloaded ROUTES or use
+		// Use either newer downloaded ROUTES/ICONS or use
 		// the one delivered with the module.
 		this.routes = this.config.ROUTES || ROUTES
+		this.icons = this.config.ICONS || ICONS
 
 		this.BUTTON_COLOR_ON = '#0b730d'
 		this.BUTTON_COLOR_OFF = '#0000ff'
@@ -56,7 +58,7 @@ class instance extends instance_skel {
 		this.initFeedbacks()
 		this.initPresets()
 		this.getConfigAndCheckFeedbacks()
-		this.downloadROUTES()
+		this.downloadConfig()
 	}
 
 	initButtonColors() {
@@ -74,7 +76,7 @@ class instance extends instance_skel {
 		this.button_color_error = hexStringToRgb(this.config.button_color_error, this.BUTTON_COLOR_ERROR)
 	}
 
-	downloadROUTES() {
+	downloadConfig() {
 		// Download new ROUTES config which is used to generate actions, presets,
 		// feedbacks dynamically.
 		// New ROUTES is only used after restart of companion.
@@ -82,13 +84,43 @@ class instance extends instance_skel {
 		// Download only if the user checked the corresponding checkbox.
 		if (!this.config.download_routes) return
 
-		const url = 'http://mars.hackcare.net/public/ROUTES.json'
-		new Client().get(url, (data, response) => {
-			const successful = 200 <= response.statusCode && response.statusCode < 300
-			if (!successful) return
-			this.config.ROUTES = data
-			this.saveConfig()
-		})
+		const routesUrl = 'https://ws.myapplause.app/rc/companion/routes'
+		new Client()
+			.get(routesUrl, (data, response) => {
+				const successful = 200 <= response.statusCode && response.statusCode < 300
+				if (!successful) {
+					this.log('warn', 'Could not download new MyApplause Control config.')
+				} else {
+					this.config.ROUTES = JSON.parse(data.toString())
+					this.saveConfig()
+					this.log(
+						'info',
+						'Succesfuly downloaded MyApplause Control config. Changes will only be effective after you restarted Companion.'
+					)
+				}
+			})
+			.on('error', function (err) {
+				this.log('warn', 'Could not download new MyApplause Control config.')
+			})
+
+		const iconsUrl = 'https://ws.myapplause.app/rc/companion/icons'
+		new Client()
+			.get(iconsUrl, (data, response) => {
+				const successful = 200 <= response.statusCode && response.statusCode < 300
+				if (!successful) {
+					this.log('warn', 'Could not download new MyApplause Control icons.')
+				} else {
+					this.config.ICONS = JSON.parse(data.toString())
+					this.saveConfig()
+					this.log(
+						'info',
+						'Succesfuly downloaded MyApplause Control icons. Changes will only be effective after you restarted Companion.'
+					)
+				}
+			})
+			.on('error', function (err) {
+				this.log('warn', 'Could not download new MyApplause Control icons.')
+			})
 	}
 
 	getConfigAndCheckFeedbacks() {
@@ -112,8 +144,8 @@ class instance extends instance_skel {
 				const regex = /\/rc\/pid\/(\w+)\/(\w+)\//
 				const match = url.match(regex)
 				if (match) {
-					const eventId = match[1]
-					const pid = match[2]
+					const pid = match[1]
+					const eventId = match[2]
 					const panoramaUrl = `https://macs.myapplause.app/id/${eventId}/panorama?pid=${pid}`
 					this.log(
 						'warn',

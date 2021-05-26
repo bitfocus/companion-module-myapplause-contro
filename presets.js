@@ -1,5 +1,4 @@
 const lodash = require('lodash')
-const icons = require('./icons')
 
 module.exports = {
 	initPresets() {
@@ -9,13 +8,13 @@ module.exports = {
 			const actionKey = action.actionKey
 			const predefineName = action.predefineName
 			const path = this.actionKeyToPath[predefineKey]
-			const icon = icons[action.actionKey]
+			const icon = this.icons[action.actionKey]
 			const tooltip = action.tooltip
 			const additionalCategories = action.groups
 
 			const iconPreset = this.createPreset({
 				id: predefineKey,
-				category: capitalizeFirstLetter(path[0]) + ' Commands (Icon)',
+				category: capitalizeFirstLetter(path[0]) + ' (Icon)',
 				actionKey: actionKey,
 				predefineName: predefineName,
 				icon: icon,
@@ -25,7 +24,7 @@ module.exports = {
 			})
 			const textPreset = this.createPreset({
 				id: predefineKey,
-				category: capitalizeFirstLetter(path[0]) + ' Commands (Text)',
+				category: capitalizeFirstLetter(path[0]) + ' (Text)',
 				actionKey: actionKey,
 				predefineName: predefineName,
 				icon: undefined,
@@ -36,22 +35,22 @@ module.exports = {
 
 			const actionName = path[path.length - 1]
 			if (actionName === 'on' || actionName === 'off') {
-				presets.push({ ...iconPreset, category: 'NoToggle Commands (Icon)' })
-				presets.push({ ...textPreset, category: 'NoToggle Commands (Text)' })
+				presets.push({ ...iconPreset, category: 'NoToggle (Icon)' })
+				presets.push({ ...textPreset, category: 'NoToggle (Text)' })
 				additionalCategories.forEach((category) => {
-					presets.push({ ...iconPreset, category: `${category} Commands (Icon)` })
-					presets.push({ ...textPreset, category: `${category} Commands (Text)` })
+					presets.push({ ...iconPreset, category: `${category} (Icon)` })
+					presets.push({ ...textPreset, category: `${category} (Text)` })
 				})
 			} else {
-				presets.push({ ...iconPreset, category: 'All Commands (Icon)' })
-				presets.push({ ...textPreset, category: 'All Commands (Text)' })
-				if (predefineKey.endsWith('/toggle ')) presets.push({ ...iconPreset, category: 'Toggle Commands (Icon)' })
-				if (predefineKey.endsWith('/toggle ')) presets.push({ ...textPreset, category: 'Toggle Commands (Text)' })
+				presets.push({ ...iconPreset, category: 'All (Icon)' })
+				presets.push({ ...textPreset, category: 'All (Text)' })
+				if (predefineKey.endsWith('/toggle ')) presets.push({ ...iconPreset, category: 'Toggle (Icon)' })
+				if (predefineKey.endsWith('/toggle ')) presets.push({ ...textPreset, category: 'Toggle (Text)' })
 				presets.push(iconPreset)
 				presets.push(textPreset)
 				additionalCategories.forEach((category) => {
-					presets.push({ ...iconPreset, category: `${category} Commands (Icon)` })
-					presets.push({ ...textPreset, category: `${category} Commands (Text)` })
+					presets.push({ ...iconPreset, category: `${category} (Icon)` })
+					presets.push({ ...textPreset, category: `${category} (Text)` })
 				})
 			}
 		}
@@ -110,7 +109,7 @@ module.exports = {
 				text: icon ? shortText : altText,
 				size: icon ? size(shortText) : size(altText),
 				latch: !lodash.isEmpty(releaseActions),
-				png64: icon || icons['default'],
+				png64: icon || this.icons['default'],
 				alignment: icon ? 'center:bottom' : 'center:top',
 				pngalignment: 'center:center',
 				color: this.rgb(255, 255, 255),

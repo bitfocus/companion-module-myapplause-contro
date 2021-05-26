@@ -1,6 +1,3 @@
-const lodash = require('lodash')
-const icons = require('./icons')
-
 module.exports = {
 	initFeedbacks() {
 		const feedbacks = {}
