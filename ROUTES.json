@@ -5,7 +5,7 @@
                 "{TOGGLES: ['SHOW_BACKGROUND_IMAGE']}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -15,25 +15,23 @@
                 "{SHOW_BACKGROUND_IMAGE: 1}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "off": {
             "commands": [
                 "{SHOW_BACKGROUND_IMAGE: 0}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "url": {
             "commands": [
                 "{BACKGROUND_IMAGE_URL: n[0]}"
             ],
             "tooltip": "Sets background image to url",
-            "predefines": {
+            "presetTemplates": {
                 "Stage": [
                     "https://lic.hackcare.net/public/meinapplaus/images/Panorama_Stage2.jpg"
                 ],
@@ -52,25 +50,23 @@
                 "{EMOJIS_ENABLED: 1}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "off": {
             "commands": [
                 "{EMOJIS_ENABLED: 0}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "toggle": {
             "commands": [
                 "{TOGGLES: ['EMOJIS_ENABLED']}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -80,7 +76,7 @@
                 "{EMOJI_ROW_START: n[0], EMOJI_COLUMN_START: n[1], EMOJI_ROW_END: n[2], EMOJI_COLUMN_END: n[3]}"
             ],
             "tooltip": "area test tooltip",
-            "predefines": {
+            "presetTemplates": {
                 "Left": [
                     1,
                     5,
@@ -110,25 +106,23 @@
                     "{EMOJI_STORM: 1}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "off": {
                 "commands": [
                     "{EMOJI_STORM: 0}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['EMOJI_STORM']}"
                 ],
                 "tooltip": "",
-                "predefines": {},
+                "presetTemplates": {},
                 "groups": [
                     "QuickStart"
                 ]
@@ -140,25 +134,23 @@
                     "{SHOW_ENGAGEMENT_EMOJIS: 1}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "off": {
                 "commands": [
                     "{SHOW_ENGAGEMENT_EMOJIS: 0}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['SHOW_ENGAGEMENT_EMOJIS']}"
                 ],
                 "tooltip": "",
-                "predefines": {},
+                "presetTemplates": {},
                 "groups": [
                     "QuickStart"
                 ]
@@ -170,25 +162,23 @@
                     "{EMOJI_FADE_OUT: 1}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "off": {
                 "commands": [
                     "{EMOJI_FADE_OUT: 0}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['EMOJI_FADE_OUT']}"
                 ],
                 "tooltip": "",
-                "predefines": {},
+                "presetTemplates": {},
                 "groups": [
                     "QuickStart"
                 ]
@@ -199,18 +189,18 @@
                 "{EMOJI_MULTIPLIER: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {
+            "presetTemplates": {
                 "x0.25": [
-                   0.25 
+                    0.25
                 ],
                 "x0.5": [
-                   0.5 
+                    0.5
                 ],
                 "x1": [
-                   1 
+                    1
                 ],
                 "x2": [
-                   2 
+                    2
                 ]
             },
             "groups": [
@@ -222,18 +212,16 @@
                 "{MAX_EMOJI_COUNT: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "maxPerRound": {
             "commands": [
                 "{MAX_EMOJI_PER_ROUND_COUNT: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "size": {
             "commands": [
@@ -241,18 +229,18 @@
                 "{EMOJI_MAX_SIZE: 1 + Math.floor(n[0]) * 0.040}"
             ],
             "tooltip": "",
-            "predefines": {
+            "presetTemplates": {
                 "25": [
-                   25
+                    25
                 ],
                 "50": [
-                   50
+                    50
                 ],
                 "100": [
-                   100
+                    100
                 ],
                 "250": [
-                   250
+                    250
                 ]
             },
             "groups": [
@@ -265,25 +253,23 @@
                     "{EMOJI_NO_HOME: 1}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "off": {
                 "commands": [
                     "{EMOJI_NO_HOME: 0}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['EMOJI_NO_HOME']}"
                 ],
                 "tooltip": "",
-                "predefines": {},
+                "presetTemplates": {},
                 "groups": [
                     "QuickStart"
                 ]
@@ -295,25 +281,23 @@
                     "{EMOJI_NO_GUEST: 1}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "off": {
                 "commands": [
                     "{EMOJI_NO_GUEST: 0}"
                 ],
                 "tooltip": "",
-                "predefines": {},
-                "groups": [
-                ]
+                "presetTemplates": {},
+                "groups": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['EMOJI_NO_GUEST']}"
                 ],
                 "tooltip": "",
-                "predefines": {},
+                "presetTemplates": {},
                 "groups": [
                     "QuickStart"
                 ]
@@ -325,9 +309,8 @@
                 "[102, [1, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         }
     },
     "msg": {
@@ -336,7 +319,7 @@
                 "{TOGGLES: ['MESSAGES_ENABLED']}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -346,25 +329,23 @@
                 "{MESSAGES_ENABLED: 1}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "off": {
             "commands": [
                 "{MESSAGES_ENABLED: 0}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "area": {
             "commands": [
                 "{MESSAGES_ROW_START: n[0], MESSAGES_COLUMN_START: n[1], MESSAGES_ROW_END: n[2], MESSAGES_COLUMN_END: n[3]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -374,7 +355,7 @@
                 "{MESSAGES_FONT_SIZE: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -384,7 +365,7 @@
                 "{MESSAGES_TEXT_OUTLINE: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -394,7 +375,7 @@
                 "{MESSAGES_TEXT_SHADOW: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -404,7 +385,7 @@
                 "{MESSAGES_TEXT_STROKE: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -414,7 +395,7 @@
                 "{MESSAGES_MARGIN_BOTTOM: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -424,7 +405,7 @@
                 "{MESSAGES_FONT_WEIGHT: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -434,7 +415,7 @@
                 "{MESSAGES_DELAY: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -446,25 +427,23 @@
                 "{CHART_ENABLED: 1}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "off": {
             "commands": [
                 "{CHART_ENABLED: 0}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "toggle": {
             "commands": [
                 "{TOGGLES: ['CHART_ENABLED']}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -474,9 +453,8 @@
                 "{CHART_ROW_START: n[0], CHART_COLUMN_START: n[1], CHART_ROW_END: n[2], CHART_COLUMN_END: n[3]}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         }
     },
     "video": {
@@ -485,7 +463,7 @@
                 "{VIDEO_STRIPE_ROW_START: n[0], VIDEO_STRIPE_COLUMN_START: n[1], VIDEO_STRIPE_ROW_END: n[2], VIDEO_STRIPE_COLUMN_END: n[3]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -495,34 +473,31 @@
                 "{VIDEO_SPEED: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "on": {
             "commands": [
                 "{VIDEO_ENABLED: 1}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "off": {
             "commands": [
                 "{VIDEO_ENABLED: 0}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "toggle": {
             "commands": [
                 "{TOGGLES: ['VIDEO_ENABLED']}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -532,7 +507,7 @@
                 "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'VERT', VIDEO_STRIPE_COLUMN_START: 97, VIDEO_STRIPE_ROW_START: 1, EMOJI_ROW_END: 101}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -542,7 +517,7 @@
                 "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'HORIZ', VIDEO_STRIPE_COLUMN_START: 1, VIDEO_STRIPE_ROW_START: 90, EMOJI_ROW_END: 90}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -552,7 +527,7 @@
                 "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'MATRIX'}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -562,7 +537,7 @@
                 "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'URL'}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -574,16 +549,15 @@
                 "{[n[0]]: n[1]||0}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "hexcolor": {
             "commands": [
                 "{PANORAMA_BG_COLOR: '#' + n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -593,16 +567,15 @@
                 "{PANORAMA_BG_COLOR: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         },
         "green": {
             "commands": [
                 "{PANORAMA_BG_COLOR: '#00b140'}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -612,9 +585,8 @@
                 "{PANORAMA_BG_COLOR: 'black'}"
             ],
             "tooltip": "",
-            "predefines": {},
-            "groups": [
-            ]
+            "presetTemplates": {},
+            "groups": []
         }
     },
     "app": {
@@ -623,7 +595,7 @@
                 "[33, [2**(n[0]-1), 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -633,7 +605,7 @@
                 "[33, [0, 2**(n[0]-1), 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -643,7 +615,7 @@
                 "[n[0], [n[1]||0, n[2]||0, n[3]||0, n[4]||0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -653,7 +625,7 @@
                 "[30, [2**(n[0]-1), 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -663,7 +635,7 @@
                 "[33, [0, 0, 2**(n[0]-1), 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -673,7 +645,7 @@
                 "[33, [0, 0, 0, 2**(n[0]-1)]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -683,7 +655,7 @@
                 "[101, [n[0], 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -693,7 +665,7 @@
                 "[22, [n[0], 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -703,7 +675,7 @@
                 "[21, [n[0], 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -713,7 +685,7 @@
                 "[102, [1, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -723,7 +695,7 @@
                 "[102, [129, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -733,7 +705,7 @@
                 "[102, [0, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -743,7 +715,7 @@
                 "[102, [10, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -753,7 +725,7 @@
                 "[102, [11, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -763,7 +735,7 @@
                 "[102, [13, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -775,7 +747,7 @@
                 "{DUMP_CONFIG: 1}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -786,7 +758,7 @@
                     "{CONFIG_DISPLAY_ENABLED: 1}"
                 ],
                 "tooltip": "",
-                "predefines": {},
+                "presetTemplates": {},
                 "groups": [
                     "QuickStart"
                 ]
@@ -796,7 +768,7 @@
                     "{CONFIG_DISPLAY_ENABLED: 0}"
                 ],
                 "tooltip": "",
-                "predefines": {},
+                "presetTemplates": {},
                 "groups": [
                     "QuickStart"
                 ]
@@ -806,7 +778,7 @@
                     "{TOGGLES: ['CONFIG_DISPLAY_ENABLED']}"
                 ],
                 "tooltip": "",
-                "predefines": {},
+                "presetTemplates": {},
                 "groups": [
                     "QuickStart"
                 ]
@@ -817,7 +789,7 @@
                 "[102, [14, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]
@@ -829,7 +801,7 @@
                 "{EMOJIS_ENABLED: n[0]}"
             ],
             "tooltip": "",
-            "predefines": {},
+            "presetTemplates": {},
             "groups": [
                 "QuickStart"
             ]

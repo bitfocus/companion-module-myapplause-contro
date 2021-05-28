@@ -3,34 +3,34 @@ const lodash = require('lodash')
 module.exports = {
 	initPresets() {
 		var presets = []
-		for (const predefineKey of Object.keys(this.actions)) {
-			const action = this.actions[predefineKey]
+		for (const presetKey of Object.keys(this.actions)) {
+			const action = this.actions[presetKey]
 			const actionKey = action.actionKey
-			const predefineName = action.predefineName
-			const path = this.actionKeyToPath[predefineKey]
+			const presetName = action.presetName
+			const path = this.actionKeyToPath[presetKey]
 			const icon = this.icons[action.actionKey]
 			const tooltip = action.tooltip
 			const additionalCategories = action.groups
 
 			const iconPreset = this.createPreset({
-				id: predefineKey,
+				id: presetKey,
 				category: capitalizeFirstLetter(path[0]) + ' (Icon)',
 				actionKey: actionKey,
-				predefineName: predefineName,
+				presetName: presetName,
 				icon: icon,
 				tooltip: tooltip,
-				actions: [predefineKey],
-				feedbacks: [predefineKey],
+				actions: [presetKey],
+				feedbacks: [presetKey],
 			})
 			const textPreset = this.createPreset({
-				id: predefineKey,
+				id: presetKey,
 				category: capitalizeFirstLetter(path[0]) + ' (Text)',
 				actionKey: actionKey,
-				predefineName: predefineName,
+				presetName: presetName,
 				icon: undefined,
 				tooltip: tooltip,
-				actions: [predefineKey],
-				feedbacks: [predefineKey],
+				actions: [presetKey],
+				feedbacks: [presetKey],
 			})
 
 			const actionName = path[path.length - 1]
@@ -44,8 +44,8 @@ module.exports = {
 			} else {
 				presets.push({ ...iconPreset, category: 'All (Icon)' })
 				presets.push({ ...textPreset, category: 'All (Text)' })
-				if (predefineKey.endsWith('/toggle ')) presets.push({ ...iconPreset, category: 'Toggle (Icon)' })
-				if (predefineKey.endsWith('/toggle ')) presets.push({ ...textPreset, category: 'Toggle (Text)' })
+				if (presetKey.endsWith('/toggle ')) presets.push({ ...iconPreset, category: 'Toggle (Icon)' })
+				if (presetKey.endsWith('/toggle ')) presets.push({ ...textPreset, category: 'Toggle (Text)' })
 				presets.push(iconPreset)
 				presets.push(textPreset)
 				additionalCategories.forEach((category) => {
@@ -62,7 +62,7 @@ module.exports = {
 		category,
 		tooltip,
 		actionKey,
-		predefineName,
+		presetName,
 		icon,
 		actions = [],
 		releaseActions = [],
@@ -79,13 +79,13 @@ module.exports = {
 				.replace(/reload/g, '🔃 ')
 				.replace(/toggle$/, '✔️/❌') +
 			' ' +
-			predefineName
+			presetName
 
 		let shortText = ''
 		if (actionKey.match(/.*toggle$/)) shortText = '✔️/❌'
 		else if (actionKey.match(/.*\/on$/)) shortactionKey = '✔️'
 		else if (actionKey.match(/.*\/off$/)) shortText = '❌'
-		shortText = shortText + ' ' + predefineName
+		shortText = shortText + ' ' + presetName
 
 		function size(text) {
 			if (
@@ -103,7 +103,7 @@ module.exports = {
 		return {
 			id: id,
 			category: category,
-			label: (tooltip || actionKey.replace(/\//g, ' ')) + ' ' + predefineName,
+			label: (tooltip || actionKey.replace(/\//g, ' ')) + ' ' + presetName,
 			bank: {
 				style: 'text',
 				text: icon ? shortText : altText,

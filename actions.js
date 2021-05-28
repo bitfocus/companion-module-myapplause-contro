@@ -18,19 +18,19 @@ module.exports = {
 				if (!lodash.isObject(childObj)) return
 
 				if (isRouteConfig(childObj)) {
-					let { commands, tooltip = '', predefines = {}, groups = [] } = childObj
+					let { commands, tooltip = '', presetTemplates = {}, groups = [] } = childObj
 
 					// get number of params
 					const match = commands[0].match(/n\[\d+\]/g)
 					const paramCount = match ? match.length : 0
 
 					const actionKey = path_.join('/')
-					// Add null predefine if predefines is empty
-					if (lodash.isEmpty(predefines)) predefines[''] = []
+					// Add null predefine if presetTemplates is empty
+					if (lodash.isEmpty(presetTemplates)) presetTemplates[''] = []
 
-					for (const [predefineName, predefineParams] of Object.entries(predefines)) {
-						const predefineKey = actionKey + ' ' + predefineName
-						const label = path_.join(' ') + ' ' + predefineName
+					for (const [presetName, presetOptions] of Object.entries(presetTemplates)) {
+						const presetKey = actionKey + ' ' + presetName
+						const label = path_.join(' ') + ' ' + presetName
 
 						const options = []
 						for (let i = 0; i < paramCount; i++) {
@@ -39,23 +39,23 @@ module.exports = {
 								label: `Param ${i}`,
 								id: `param${i}`,
 								regex: this.REGEX_SOMETHING,
-								default: predefineParams[i],
+								default: presetOptions[i],
 							})
 						}
 
-						actions[predefineKey] = {
+						actions[presetKey] = {
 							actionKey: actionKey,
 							label: label,
 							options: options,
 							func: new Function('n', 'return ' + commands[0]),
 							tooltip: tooltip,
 							groups: groups,
-							predefineName: predefineName,
+							presetName: presetName,
 						}
 
-						this.actionKeyToPath[predefineKey] = path_
+						this.actionKeyToPath[presetKey] = path_
 						if (commands[0].includes('TOGGLES: ')) {
-							actions[predefineKey].toggles = actions[predefineKey].func().TOGGLES
+							actions[presetKey].toggles = actions[presetKey].func().TOGGLES
 						}
 					}
 				} else {
