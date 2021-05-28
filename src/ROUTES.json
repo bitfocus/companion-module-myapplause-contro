@@ -5,8 +5,8 @@
                 "{TOGGLES: ['SHOW_BACKGROUND_IMAGE']}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -15,23 +15,23 @@
                 "{SHOW_BACKGROUND_IMAGE: 1}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "off": {
             "commands": [
                 "{SHOW_BACKGROUND_IMAGE: 0}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "url": {
             "commands": [
                 "{BACKGROUND_IMAGE_URL: n[0]}"
             ],
             "tooltip": "Sets background image to url",
-            "presetTemplates": {
+            "presetConfigurations": {
                 "Stage": [
                     "https://lic.hackcare.net/public/meinapplaus/images/Panorama_Stage2.jpg"
                 ],
@@ -39,7 +39,7 @@
                     "https://lic.hackcare.net/public/meinapplaus/images/Panorama_Stadion.jpg"
                 ]
             },
-            "groups": [
+            "categories": [
                 "QuickStart"
             ]
         }
@@ -50,24 +50,24 @@
                 "{EMOJIS_ENABLED: 1}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "off": {
             "commands": [
                 "{EMOJIS_ENABLED: 0}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "toggle": {
             "commands": [
                 "{TOGGLES: ['EMOJIS_ENABLED']}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -76,7 +76,7 @@
                 "{EMOJI_ROW_START: n[0], EMOJI_COLUMN_START: n[1], EMOJI_ROW_END: n[2], EMOJI_COLUMN_END: n[3]}"
             ],
             "tooltip": "area test tooltip",
-            "presetTemplates": {
+            "presetConfigurations": {
                 "Left": [
                     1,
                     5,
@@ -96,7 +96,7 @@
                     95
                 ]
             },
-            "groups": [
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -106,24 +106,24 @@
                     "{EMOJI_STORM: 1}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "off": {
                 "commands": [
                     "{EMOJI_STORM: 0}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['EMOJI_STORM']}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": [
+                "presetConfigurations": {},
+                "categories": [
                     "QuickStart"
                 ]
             }
@@ -134,24 +134,24 @@
                     "{SHOW_ENGAGEMENT_EMOJIS: 1}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "off": {
                 "commands": [
                     "{SHOW_ENGAGEMENT_EMOJIS: 0}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['SHOW_ENGAGEMENT_EMOJIS']}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": [
+                "presetConfigurations": {},
+                "categories": [
                     "QuickStart"
                 ]
             }
@@ -162,24 +162,24 @@
                     "{EMOJI_FADE_OUT: 1}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "off": {
                 "commands": [
                     "{EMOJI_FADE_OUT: 0}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['EMOJI_FADE_OUT']}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": [
+                "presetConfigurations": {},
+                "categories": [
                     "QuickStart"
                 ]
             }
@@ -189,7 +189,7 @@
                 "{EMOJI_MULTIPLIER: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {
+            "presetConfigurations": {
                 "x0.25": [
                     0.25
                 ],
@@ -203,7 +203,7 @@
                     2
                 ]
             },
-            "groups": [
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -212,16 +212,16 @@
                 "{MAX_EMOJI_COUNT: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "maxPerRound": {
             "commands": [
                 "{MAX_EMOJI_PER_ROUND_COUNT: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "size": {
             "commands": [
@@ -229,7 +229,7 @@
                 "{EMOJI_MAX_SIZE: 1 + Math.floor(n[0]) * 0.040}"
             ],
             "tooltip": "",
-            "presetTemplates": {
+            "presetConfigurations": {
                 "25": [
                     25
                 ],
@@ -243,7 +243,7 @@
                     250
                 ]
             },
-            "groups": [
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -253,24 +253,24 @@
                     "{EMOJI_NO_HOME: 1}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "off": {
                 "commands": [
                     "{EMOJI_NO_HOME: 0}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['EMOJI_NO_HOME']}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": [
+                "presetConfigurations": {},
+                "categories": [
                     "QuickStart"
                 ]
             }
@@ -281,24 +281,24 @@
                     "{EMOJI_NO_GUEST: 1}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "off": {
                 "commands": [
                     "{EMOJI_NO_GUEST: 0}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": []
+                "presetConfigurations": {},
+                "categories": []
             },
             "toggle": {
                 "commands": [
                     "{TOGGLES: ['EMOJI_NO_GUEST']}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": [
+                "presetConfigurations": {},
+                "categories": [
                     "QuickStart"
                 ]
             }
@@ -309,8 +309,8 @@
                 "[102, [1, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         }
     },
     "msg": {
@@ -319,8 +319,8 @@
                 "{TOGGLES: ['MESSAGES_ENABLED']}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -329,24 +329,24 @@
                 "{MESSAGES_ENABLED: 1}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "off": {
             "commands": [
                 "{MESSAGES_ENABLED: 0}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "area": {
             "commands": [
                 "{MESSAGES_ROW_START: n[0], MESSAGES_COLUMN_START: n[1], MESSAGES_ROW_END: n[2], MESSAGES_COLUMN_END: n[3]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -355,8 +355,8 @@
                 "{MESSAGES_FONT_SIZE: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -365,8 +365,8 @@
                 "{MESSAGES_TEXT_OUTLINE: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -375,8 +375,8 @@
                 "{MESSAGES_TEXT_SHADOW: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -385,8 +385,8 @@
                 "{MESSAGES_TEXT_STROKE: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -395,8 +395,8 @@
                 "{MESSAGES_MARGIN_BOTTOM: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -405,8 +405,8 @@
                 "{MESSAGES_FONT_WEIGHT: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -415,8 +415,8 @@
                 "{MESSAGES_DELAY: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         }
@@ -427,24 +427,24 @@
                 "{CHART_ENABLED: 1}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "off": {
             "commands": [
                 "{CHART_ENABLED: 0}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "toggle": {
             "commands": [
                 "{TOGGLES: ['CHART_ENABLED']}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -453,8 +453,8 @@
                 "{CHART_ROW_START: n[0], CHART_COLUMN_START: n[1], CHART_ROW_END: n[2], CHART_COLUMN_END: n[3]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         }
     },
     "video": {
@@ -463,8 +463,8 @@
                 "{VIDEO_STRIPE_ROW_START: n[0], VIDEO_STRIPE_COLUMN_START: n[1], VIDEO_STRIPE_ROW_END: n[2], VIDEO_STRIPE_COLUMN_END: n[3]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -473,32 +473,32 @@
                 "{VIDEO_SPEED: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "on": {
             "commands": [
                 "{VIDEO_ENABLED: 1}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "off": {
             "commands": [
                 "{VIDEO_ENABLED: 0}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "toggle": {
             "commands": [
                 "{TOGGLES: ['VIDEO_ENABLED']}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -507,8 +507,8 @@
                 "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'VERT', VIDEO_STRIPE_COLUMN_START: 97, VIDEO_STRIPE_ROW_START: 1, EMOJI_ROW_END: 101}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -517,8 +517,8 @@
                 "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'HORIZ', VIDEO_STRIPE_COLUMN_START: 1, VIDEO_STRIPE_ROW_START: 90, EMOJI_ROW_END: 90}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -527,8 +527,8 @@
                 "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'MATRIX'}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -537,8 +537,8 @@
                 "{VIDEO_ENABLED: 1, VIDEO_TYPE: 'URL'}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         }
@@ -549,16 +549,16 @@
                 "{[n[0]]: n[1]||0}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "hexcolor": {
             "commands": [
                 "{PANORAMA_BG_COLOR: '#' + n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -567,16 +567,16 @@
                 "{PANORAMA_BG_COLOR: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         },
         "green": {
             "commands": [
                 "{PANORAMA_BG_COLOR: '#00b140'}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -585,8 +585,8 @@
                 "{PANORAMA_BG_COLOR: 'black'}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": []
+            "presetConfigurations": {},
+            "categories": []
         }
     },
     "app": {
@@ -595,8 +595,8 @@
                 "[33, [2**(n[0]-1), 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -605,8 +605,8 @@
                 "[33, [0, 2**(n[0]-1), 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -615,8 +615,8 @@
                 "[n[0], [n[1]||0, n[2]||0, n[3]||0, n[4]||0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -625,8 +625,8 @@
                 "[30, [2**(n[0]-1), 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -635,8 +635,8 @@
                 "[33, [0, 0, 2**(n[0]-1), 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -645,8 +645,8 @@
                 "[33, [0, 0, 0, 2**(n[0]-1)]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -655,8 +655,8 @@
                 "[101, [n[0], 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -665,8 +665,8 @@
                 "[22, [n[0], 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -675,8 +675,8 @@
                 "[21, [n[0], 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -685,8 +685,8 @@
                 "[102, [1, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -695,8 +695,8 @@
                 "[102, [129, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -705,8 +705,8 @@
                 "[102, [0, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -715,8 +715,8 @@
                 "[102, [10, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -725,8 +725,8 @@
                 "[102, [11, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -735,8 +735,8 @@
                 "[102, [13, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         }
@@ -747,8 +747,8 @@
                 "{DUMP_CONFIG: 1}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         },
@@ -758,8 +758,8 @@
                     "{CONFIG_DISPLAY_ENABLED: 1}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": [
+                "presetConfigurations": {},
+                "categories": [
                     "QuickStart"
                 ]
             },
@@ -768,8 +768,8 @@
                     "{CONFIG_DISPLAY_ENABLED: 0}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": [
+                "presetConfigurations": {},
+                "categories": [
                     "QuickStart"
                 ]
             },
@@ -778,8 +778,8 @@
                     "{TOGGLES: ['CONFIG_DISPLAY_ENABLED']}"
                 ],
                 "tooltip": "",
-                "presetTemplates": {},
-                "groups": [
+                "presetConfigurations": {},
+                "categories": [
                     "QuickStart"
                 ]
             }
@@ -789,8 +789,8 @@
                 "[102, [14, 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         }
@@ -801,8 +801,8 @@
                 "{EMOJIS_ENABLED: n[0]}"
             ],
             "tooltip": "",
-            "presetTemplates": {},
-            "groups": [
+            "presetConfigurations": {},
+            "categories": [
                 "QuickStart"
             ]
         }

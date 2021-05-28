@@ -3,76 +3,86 @@ const Client = require('node-rest-client').Client
 
 module.exports = {
 	initActions() {
-		const actions = {}
+		this.actionDefinitions = {}
 		this.actionIdToPath = {}
 
-		// Parse ROUTES.json to generate actions dynamically.
-		const parseRoutes = (obj, path = []) => {
-			function isRouteConfig(obj) {
-				return obj.hasOwnProperty('commands') && lodash.isArray(obj.commands)
+		const parseRoutes = (node, cmdPath = []) => {
+			// Recursively parse ROUTES.json.
+			// Actions, feedbacks and presets are generated dynamically from information in ROUTES.json.
+			// ROUTES.json defines our actions on the client and on the server side.
+			// The actions are defined in a tree like fashion.
+			// The leafes of the tree define our actions. The nodes on the path to a leaf
+			// define a cmd path that on the server side is used to offer the corresponding action
+			// as http endpont. e.g. the http endpoint for the following command is: .../image/toggle
+
+			// "image": {
+			//     "toggle": {
+			//         "commands": [ ... ],
+			//         "tooltip": "...",
+			//         "presetConfigurations": { ... },
+			//         "categories": [ ... ]"
+			// 	   }
+			// }
+
+			function isLeafNode(node) {
+				return node.hasOwnProperty('commands') && lodash.isArray(node.commands)
 			}
 
-			for (const key of Object.keys(obj)) {
-				const path_ = path.concat([key])
-				const childObj = obj[key]
-				if (!lodash.isObject(childObj)) return
+			for (const [key, childNode] of Object.entries(node)) {
+				const cmdPath_ = cmdPath.concat([key])
 
-				if (isRouteConfig(childObj)) {
-					let { commands, tooltip = '', presetTemplates = {}, groups = [] } = childObj
+				if (!isLeafNode(childNode)) {
+					parseRoutes(childNode, cmdPath_)
+				} else {
+					let { commands, tooltip = '', presetConfigurations = {}, categories = [] } = childNode
 
 					// get number of params
 					const match = commands[0].match(/n\[\d+\]/g)
 					const paramCount = match ? match.length : 0
 
-					const actionId = path_.join('/')
-					// Add null predefine if presetTemplates is empty
-					if (lodash.isEmpty(presetTemplates)) presetTemplates[''] = []
-
-					for (const [presetName, presetOptions] of Object.entries(presetTemplates)) {
-						const presetKey = actionId + ' ' + presetName
-						const label = path_.join(' ') + ' ' + presetName
-
-						const options = []
-						for (let i = 0; i < paramCount; i++) {
-							options.push({
-								type: 'textinput',
-								label: `Param ${i}`,
-								id: `param${i}`,
-								regex: this.REGEX_SOMETHING,
-								default: presetOptions[i],
-							})
-						}
-
-						actions[presetKey] = {
-							actionId: actionId,
-							label: label,
-							options: options,
-							func: new Function('n', 'return ' + commands[0]),
-							tooltip: tooltip,
-							groups: groups,
-							presetName: presetName,
-						}
-
-						this.actionIdToPath[presetKey] = path_
-						if (commands[0].includes('TOGGLES: ')) {
-							actions[presetKey].toggles = actions[presetKey].func().TOGGLES
-						}
+					// create options for action
+					const options = []
+					for (let i = 0; i < paramCount; i++) {
+						options.push({
+							type: 'textinput',
+							label: `Param ${i}`,
+							id: `param${i}`,
+							regex: this.REGEX_SOMETHING,
+							default: undefined,
+						})
 					}
-				} else {
-					parseRoutes(childObj, path_)
+
+					// create action
+					const actionId = cmdPath_.join('/')
+					const label = cmdPath_.join(' ')
+					const func = new Function('n', 'return ' + commands[0])
+					// If this is a toggle command, register which configuration option is toggled.
+					const isToggleFor = key === 'toggle' && commands[0].includes('TOGGLES: ') ? func().TOGGLES : ''
+					const actionDefinition = {
+						isToggleFor: isToggleFor,
+						actionId: actionId,
+						label: label,
+						options: options,
+						func: func,
+						tooltip: tooltip,
+						categories: categories,
+						presetConfigurations: presetConfigurations,
+						cmdPath: cmdPath_,
+					}
+					this.actionDefinitions[actionId] = actionDefinition
 				}
 			}
 		}
-		parseRoutes(this.routes)
 
-		this.actions = actions
-		this.setActions(actions)
+		parseRoutes(this.routes)
+		this.setActions(this.actionDefinitions)
 	},
 	action(action) {
-		const key = action.action
-		const path = this.actionIdToPath[key]
-		if (lodash.isEmpty(path)) {
-			this.log('warn', 'Corresponding action for key "' + key + '" could not be found.')
+		const actionId = action.action
+		const cmdPath = this.actionDefinitions[actionId].cmdPath
+
+		if (lodash.isEmpty(cmdPath)) {
+			this.log('warn', 'Corresponding action for key "' + actionId + '" could not be found.')
 			return
 		}
 
@@ -83,20 +93,20 @@ module.exports = {
 
 		let url = this.config.url
 		if (!url.endsWith('/')) url = url + '/'
-		url = url + path.concat(params).join('/')
+		url = url + cmdPath.concat(params).join('/')
+
 		new Client()
 			.get(url, (data, response) => {
+				// TODO: wenn kein internet: response not defined?
 				const successful = 200 <= response.statusCode && response.statusCode < 300
 				this.status(successful ? this.STATUS_OK : this.STATUS_ERROR)
 				try {
 					this.lastAction = {
-						key: action.action,
 						browserConfig: JSON.parse(data.toString()),
 						successful: successful,
 					}
 				} catch (error) {
 					this.lastAction = {
-						key: action.action,
 						browserConfig: {},
 						successful: false,
 					}
@@ -106,7 +116,6 @@ module.exports = {
 			.on('error', (error) => {
 				this.status(this.STATUS_ERROR, response.statusCode.code)
 				this.lastAction = {
-					key: action.action,
 					browserConfig: {},
 					successful: false,
 				}

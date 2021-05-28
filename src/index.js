@@ -18,21 +18,13 @@ class instance extends instance_skel {
 			...feedbacks,
 		})
 
-		this.downloadConfig = this.downloadConfig.bind(this)
-		this.config_fields = this.config_fields.bind(this)
-		this.destroy = this.destroy.bind(this)
-		this.initActions = this.initActions.bind(this)
-		this.initFeedbacks = this.initFeedbacks.bind(this)
-		this.initButtonColors = this.initButtonColors.bind(this)
-		this.checkAllFeedbacks = this.checkAllFeedbacks.bind(this)
-		this.initPresets = this.initPresets.bind(this)
-		this.getConfigAndCheckFeedbacks = this.getConfigAndCheckFeedbacks.bind(this)
-
 		// Use either newer downloaded ROUTES/ICONS or use
 		// the one delivered with the module.
 		// TODO
 		// this.routes = this.config.ROUTES || ROUTES
 		this.routes = ROUTES
+
+		// TODO: no internet
 
 		this.icons = this.config.ICONS || ICONS
 
@@ -44,40 +36,44 @@ class instance extends instance_skel {
 		this.lastAction = {}
 	}
 
-	updateConfig(config) {
+	updateConfig = (config) => {
 		this.config = config
 		this.initButtonColors()
 	}
 
-	init() {
-		// Actions, feedbacks and presets are generated dynamically from information in ROUTES.json.
-		// The same information is used on the server side to generate the corresponding http routes.
-
-		this.initActions()
+	init = () => {
 		this.status(isValidHttpUrl(this.config.url) ? this.STATUS_OK : this.STATUS_ERROR)
 		this.initButtonColors()
+		this.initActions()
 		this.initFeedbacks()
 		this.initPresets()
-		this.getConfigAndCheckFeedbacks()
-		this.downloadConfig()
+		this.getMyApplauseStateAndCheckFeedbacks()
+		this.downloadNewConfig()
 	}
 
-	initButtonColors() {
-		const hexStringToRgb = (hexString, defaultHexString) => {
-			var bigint = parseInt(hexString.replace('#', ''), 16) || parseInt(defaultHexString.replace('#', ''), 16)
-			var r = (bigint >> 16) & 255
-			var g = (bigint >> 8) & 255
-			var b = bigint & 255
-
+	initButtonColors = () => {
+		const hexStringToRgb = (hexString) => {
+			if (!hexString) return null
+			const int = parseInt(hexString.replace('#', ''), 16)
+			const r = (int >> 16) & 255
+			const g = (int >> 8) & 255
+			const b = int & 255
 			return this.rgb(r, g, b)
 		}
 
 		this.button_color_on = hexStringToRgb(this.config.button_color_on, this.BUTTON_COLOR_ON)
-		this.button_color_off = hexStringToRgb(this.config.button_color_off, this.BUTTON_COLOR_OFF)
-		this.button_color_error = hexStringToRgb(this.config.button_color_error, this.BUTTON_COLOR_ERROR)
+		this.button_color_on = this.button_color_on == null ? hexStringToRgb(this.BUTTON_COLOR_ON) : this.button_color_on
+
+		this.button_color_off = hexStringToRgb(this.config.button_color_off)
+		this.button_color_off =
+			this.button_color_off == null ? hexStringToRgb(this.BUTTON_COLOR_OFF) : this.button_color_off
+
+		this.button_color_error = hexStringToRgb(this.config.button_color_error)
+		this.button_color_error =
+			this.button_color_error == null ? hexStringToRgb(this.BUTTON_COLOR_ERROR) : this.button_color_error
 	}
 
-	downloadConfig() {
+	downloadNewConfig = () => {
 		// Download new ROUTES config which is used to generate actions, presets,
 		// feedbacks dynamically.
 		// New ROUTES is only used after restart of companion.
@@ -86,6 +82,7 @@ class instance extends instance_skel {
 		if (!this.config.download_routes) return
 
 		const routesUrl = 'https://ws.myapplause.app/rc/companion/routes'
+		// TODO: what happens if no internet?
 		new Client()
 			.get(routesUrl, (data, response) => {
 				const successful = 200 <= response.statusCode && response.statusCode < 300
@@ -124,13 +121,14 @@ class instance extends instance_skel {
 			})
 	}
 
-	getConfigAndCheckFeedbacks() {
+	getMyApplauseStateAndCheckFeedbacks = () => {
 		// Get current configuration of the MyApplause Server instance to
 		// set feedbacks.
 		if (!this.config.url) return
 		let url = this.config.url
 		if (!url.endsWith('/')) url = url + '/'
 		url = url + 'config/dump'
+		// TODO: what happens if no internet?
 		new Client().get(url, (data, response) => {
 			let successful = 200 <= response.statusCode && response.statusCode < 300
 			let browserConfig
@@ -164,7 +162,7 @@ class instance extends instance_skel {
 		})
 	}
 
-	config_fields() {
+	config_fields = () => {
 		return [
 			{
 				type: 'text',

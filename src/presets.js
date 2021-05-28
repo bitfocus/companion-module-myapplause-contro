@@ -2,72 +2,69 @@ const lodash = require('lodash')
 
 module.exports = {
 	initPresets() {
-		var presets = []
-		for (const presetKey of Object.keys(this.actions)) {
-			const action = this.actions[presetKey]
-			const actionId = action.actionId
-			const presetName = action.presetName
-			const path = this.actionIdToPath[presetKey]
-			const icon = this.icons[action.actionId]
-			const tooltip = action.tooltip
-			const additionalCategories = action.groups
+		const presets = []
+		for (const [actionId, actionDefinition] of Object.entries(this.actionDefinitions)) {
+			const cmdPath = actionDefinition.cmdPath
+			const presetConfigurations = actionDefinition.presetConfigurations
+			const icon = this.icons[actionId]
+			const tooltip = actionDefinition.tooltip
+			const defaultCategoryPrefix = capitalizeFirstLetter(cmdPath[0])
+			const additionalCategories = actionDefinition.categories
 
-			const iconPreset = this.createPreset({
-				id: presetKey,
-				category: capitalizeFirstLetter(path[0]) + ' (Icon)',
-				actionId: actionId,
-				presetName: presetName,
-				icon: icon,
-				tooltip: tooltip,
-				actions: [presetKey],
-				feedbacks: [presetKey],
-			})
-			const textPreset = this.createPreset({
-				id: presetKey,
-				category: capitalizeFirstLetter(path[0]) + ' (Text)',
-				actionId: actionId,
-				presetName: presetName,
-				icon: undefined,
-				tooltip: tooltip,
-				actions: [presetKey],
-				feedbacks: [presetKey],
-			})
+			// Add null presetConfiguration if presetConfigurations is empty
+			if (lodash.isEmpty(presetConfigurations)) presetConfigurations[''] = []
 
-			const actionName = path[path.length - 1]
-			if (actionName === 'on' || actionName === 'off') {
-				presets.push({ ...iconPreset, category: 'NoToggle (Icon)' })
-				presets.push({ ...textPreset, category: 'NoToggle (Text)' })
-				additionalCategories.forEach((category) => {
-					presets.push({ ...iconPreset, category: `${category} (Icon)` })
-					presets.push({ ...textPreset, category: `${category} (Text)` })
+			for (const [presetName, presetParams] of Object.entries(presetConfigurations)) {
+				const presetId = actionId + '/' + presetName
+				const label = actionDefinition.cmdPath.join(' ') + ' ' + presetName
+				const presetOptions = Object.fromEntries(presetParams.map((value, i) => [`param${i}`, value]))
+
+				const iconPreset = this.createPreset({
+					category: defaultCategoryPrefix + ' (Icon)',
+					icon,
+					presetId,
+					actionId,
+					presetName,
+					tooltip,
+					presetOptions,
 				})
-			} else {
-				presets.push({ ...iconPreset, category: 'All (Icon)' })
-				presets.push({ ...textPreset, category: 'All (Text)' })
-				if (presetKey.endsWith('/toggle ')) presets.push({ ...iconPreset, category: 'Toggle (Icon)' })
-				if (presetKey.endsWith('/toggle ')) presets.push({ ...textPreset, category: 'Toggle (Text)' })
-				presets.push(iconPreset)
-				presets.push(textPreset)
-				additionalCategories.forEach((category) => {
-					presets.push({ ...iconPreset, category: `${category} (Icon)` })
-					presets.push({ ...textPreset, category: `${category} (Text)` })
+				const textPreset = this.createPreset({
+					category: defaultCategoryPrefix + ' (Text)',
+					presetId,
+					actionId,
+					presetName,
+					tooltip,
+					presetOptions,
 				})
+
+				const actionName = cmdPath[cmdPath.length - 1]
+				if (actionName === 'on' || actionName === 'off') {
+					presets.push({ ...iconPreset, category: 'NoToggle (Icon)' })
+					presets.push({ ...textPreset, category: 'NoToggle (Text)' })
+					additionalCategories.forEach((category) => {
+						presets.push({ ...iconPreset, category: `${category} (Icon)` })
+						presets.push({ ...textPreset, category: `${category} (Text)` })
+					})
+				} else {
+					presets.push({ ...iconPreset, category: 'All (Icon)' })
+					presets.push({ ...textPreset, category: 'All (Text)' })
+					if (actionDefinition.isToggleFor) {
+						presets.push({ ...iconPreset, category: 'Toggle (Icon)' })
+						presets.push({ ...textPreset, category: 'Toggle (Text)' })
+					}
+					presets.push(iconPreset)
+					presets.push(textPreset)
+					additionalCategories.forEach((category) => {
+						presets.push({ ...iconPreset, category: `${category} (Icon)` })
+						presets.push({ ...textPreset, category: `${category} (Text)` })
+					})
+				}
 			}
 		}
+
 		this.setPresetDefinitions(presets)
 	},
-
-	createPreset({
-		id,
-		category,
-		tooltip,
-		actionId,
-		presetName,
-		icon,
-		actions = [],
-		releaseActions = [],
-		feedbacks = [],
-	}) {
+	createPreset({ presetId, category, tooltip, actionId, presetName, icon, presetOptions }) {
 		altText =
 			actionId
 				.replace(/\/on$/, ' ✔️')
@@ -101,23 +98,23 @@ module.exports = {
 		}
 
 		return {
-			id: id,
+			id: presetId,
 			category: category,
 			label: (tooltip || actionId.replace(/\//g, ' ')) + ' ' + presetName,
 			bank: {
 				style: 'text',
 				text: icon ? shortText : altText,
 				size: icon ? size(shortText) : size(altText),
-				latch: !lodash.isEmpty(releaseActions),
+				latch: false, // !lodash.isEmpty(releaseActions),
 				png64: icon || this.icons['default'],
 				alignment: icon ? 'center:bottom' : 'center:top',
 				pngalignment: 'center:center',
 				color: this.rgb(255, 255, 255),
 				bgcolor: this.rgb(0, 0, 0),
 			},
-			actions: actions.map((action) => ({ action, options: {} })),
-			release_actions: releaseActions.map((action) => ({ action, options: {} })),
-			feedbacks: feedbacks.map((type) => ({ type, options: {} })),
+			actions: [{ action: actionId, options: presetOptions }],
+			feedbacks: [{ type: actionId, options: presetOptions }],
+			// release_actions: [{ action: id, options: {} }],
 		}
 	},
 }
