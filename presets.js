@@ -115,9 +115,9 @@ module.exports = {
 				color: this.rgb(255, 255, 255),
 				bgcolor: this.rgb(0, 0, 0),
 			},
-			actions: actions.map((action) => ({ action })),
-			release_actions: releaseActions.map((action) => ({ action })),
-			feedbacks: feedbacks.map((type) => ({ type })),
+			actions: actions.map((action) => ({ action, options: {} })),
+			release_actions: releaseActions.map((action) => ({ action, options: {} })),
+			feedbacks: feedbacks.map((type) => ({ type, options: {} })),
 		}
 	},
 }
