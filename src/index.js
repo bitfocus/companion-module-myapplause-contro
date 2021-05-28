@@ -1,6 +1,6 @@
 const Client = require('node-rest-client').Client
 
-const instance_skel = require('../../instance_skel')
+const instance_skel = require('../../../instance_skel')
 
 const presets = require('./presets')
 const actions = require('./actions')
@@ -32,7 +32,10 @@ class instance extends instance_skel {
 
 		// Use either newer downloaded ROUTES/ICONS or use
 		// the one delivered with the module.
-		this.routes = this.config.ROUTES || ROUTES
+		// TODO
+		// this.routes = this.config.ROUTES || ROUTES
+		this.routes = ROUTES
+
 		this.icons = this.config.ICONS || ICONS
 
 		this.BUTTON_COLOR_ON = '#0b730d'
