@@ -18,12 +18,10 @@ class instance extends instance_skel {
 			...feedbacks,
 		})
 
-		this.init = this.init.bind(this)
 		this.downloadConfig = this.downloadConfig.bind(this)
 		this.config_fields = this.config_fields.bind(this)
 		this.destroy = this.destroy.bind(this)
 		this.initActions = this.initActions.bind(this)
-		this.action = this.action.bind(this)
 		this.initFeedbacks = this.initFeedbacks.bind(this)
 		this.initButtonColors = this.initButtonColors.bind(this)
 		this.checkAllFeedbacks = this.checkAllFeedbacks.bind(this)
