@@ -10,6 +10,14 @@ class instance extends instance_skel {
 	constructor(system, id, config) {
 		super(system, id, config)
 
+		this.updateConfig = this.updateConfig.bind(this)
+		this.init = this.init.bind(this)
+		this.initButtonColors = this.initButtonColors.bind(this)
+		this.downloadNewConfig = this.downloadNewConfig.bind(this)
+		this.getMyApplauseStateAndCheckFeedbacks = this.getMyApplauseStateAndCheckFeedbacks.bind(this)
+		this.config_fields = this.config_fields.bind(this)
+		this.destroy = this.destroy.bind(this)
+
 		Object.assign(this, {
 			...presets,
 			...actions,
@@ -33,12 +41,12 @@ class instance extends instance_skel {
 		this.lastAction = {}
 	}
 
-	updateConfig = (config) => {
+	updateConfig(config) {
 		this.config = config
 		this.initButtonColors()
 	}
 
-	init = () => {
+	init() {
 		this.status(isValidHttpUrl(this.config.url) ? this.STATUS_OK : this.STATUS_ERROR)
 		this.initButtonColors()
 		this.initActions()
@@ -48,7 +56,7 @@ class instance extends instance_skel {
 		this.downloadNewConfig()
 	}
 
-	initButtonColors = () => {
+	initButtonColors() {
 		const hexStringToRgb = (hexString) => {
 			if (!hexString) return null
 			const int = parseInt(hexString.replace('#', ''), 16)
@@ -70,7 +78,7 @@ class instance extends instance_skel {
 			this.button_color_error == null ? hexStringToRgb(this.BUTTON_COLOR_ERROR) : this.button_color_error
 	}
 
-	downloadNewConfig = () => {
+	downloadNewConfig() {
 		// Download new ROUTES config which is used to generate actions, presets,
 		// feedbacks dynamically.
 		// New ROUTES is only used after restart of companion.
@@ -125,7 +133,7 @@ class instance extends instance_skel {
 		this.saveConfig()
 	}
 
-	getMyApplauseStateAndCheckFeedbacks = () => {
+	getMyApplauseStateAndCheckFeedbacks() {
 		// Get current configuration of the MyApplause Server instance to
 		// set feedbacks.
 		if (!this.config.url) return
@@ -171,7 +179,7 @@ class instance extends instance_skel {
 			})
 	}
 
-	config_fields = () => {
+	config_fields() {
 		return [
 			{
 				type: 'text',
