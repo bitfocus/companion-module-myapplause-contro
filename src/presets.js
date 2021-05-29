@@ -14,7 +14,10 @@ module.exports = {
 			if (lodash.isEmpty(presetConfigurations)) presetConfigurations[''] = []
 
 			for (const [presetName, presetParams] of Object.entries(presetConfigurations)) {
-				const presetOptions = Object.fromEntries(presetParams.map((value, i) => [`param${i}`, value]))
+				const presetOptions = {}
+				presetParams.forEach((value, i) => {
+					presetOptions[`param${i}`] = value
+				})
 
 				const iconPreset = this.createPreset({
 					actionDefinition,
