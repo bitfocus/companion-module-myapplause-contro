@@ -2,12 +2,11 @@ const lodash = require('lodash')
 
 module.exports = {
 	initPresets() {
+		// Loop over actionDefinitions and corresponding presetConfigurations to generate presets.
 		const presets = []
 		for (const [actionId, actionDefinition] of Object.entries(this.actionDefinitions)) {
 			const cmdPath = actionDefinition.cmdPath
 			const presetConfigurations = actionDefinition.presetConfigurations
-			const icon = this.icons[actionId]
-			const tooltip = actionDefinition.tooltip
 			const defaultCategoryPrefix = capitalizeFirstLetter(cmdPath[0])
 			const additionalCategories = actionDefinition.categories
 
@@ -15,25 +14,19 @@ module.exports = {
 			if (lodash.isEmpty(presetConfigurations)) presetConfigurations[''] = []
 
 			for (const [presetName, presetParams] of Object.entries(presetConfigurations)) {
-				const presetId = actionId + '/' + presetName
-				const label = actionDefinition.cmdPath.join(' ') + ' ' + presetName
 				const presetOptions = Object.fromEntries(presetParams.map((value, i) => [`param${i}`, value]))
 
 				const iconPreset = this.createPreset({
+					actionDefinition,
 					category: defaultCategoryPrefix + ' (Icon)',
-					icon,
-					presetId,
-					actionId,
+					showIcon: true,
 					presetName,
-					tooltip,
 					presetOptions,
 				})
 				const textPreset = this.createPreset({
+					actionDefinition,
 					category: defaultCategoryPrefix + ' (Text)',
-					presetId,
-					actionId,
 					presetName,
-					tooltip,
 					presetOptions,
 				})
 
@@ -41,10 +34,6 @@ module.exports = {
 				if (actionName === 'on' || actionName === 'off') {
 					presets.push({ ...iconPreset, category: 'NoToggle (Icon)' })
 					presets.push({ ...textPreset, category: 'NoToggle (Text)' })
-					additionalCategories.forEach((category) => {
-						presets.push({ ...iconPreset, category: `${category} (Icon)` })
-						presets.push({ ...textPreset, category: `${category} (Text)` })
-					})
 				} else {
 					presets.push({ ...iconPreset, category: 'All (Icon)' })
 					presets.push({ ...textPreset, category: 'All (Text)' })
@@ -54,17 +43,22 @@ module.exports = {
 					}
 					presets.push(iconPreset)
 					presets.push(textPreset)
-					additionalCategories.forEach((category) => {
-						presets.push({ ...iconPreset, category: `${category} (Icon)` })
-						presets.push({ ...textPreset, category: `${category} (Text)` })
-					})
 				}
+				additionalCategories.forEach((category) => {
+					presets.push({ ...iconPreset, category: `${category} (Icon)` })
+					presets.push({ ...textPreset, category: `${category} (Text)` })
+				})
 			}
 		}
 
 		this.setPresetDefinitions(presets)
 	},
-	createPreset({ presetId, category, tooltip, actionId, presetName, icon, presetOptions }) {
+	createPreset({ actionDefinition, category, showIcon, presetName, presetOptions }) {
+		const actionId = actionDefinition.id
+		const presetId = actionId + '/' + presetName
+		const tooltip = actionDefinition.tooltip
+		const icon = showIcon ? this.icons[actionId] : undefined
+
 		altText =
 			actionId
 				.replace(/\/on$/, ' ✔️')

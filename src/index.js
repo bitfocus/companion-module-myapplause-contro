@@ -1,7 +1,5 @@
 const Client = require('node-rest-client').Client
-
 const instance_skel = require('../../../instance_skel')
-
 const presets = require('./presets')
 const actions = require('./actions')
 const feedbacks = require('./feedbacks')
@@ -20,19 +18,18 @@ class instance extends instance_skel {
 
 		// Use either newer downloaded ROUTES/ICONS or use
 		// the one delivered with the module.
-		// TODO
-		// this.routes = this.config.ROUTES || ROUTES
-		this.routes = ROUTES
-
-		// TODO: no internet
-
+		this.routes = this.config.ROUTES || ROUTES
 		this.icons = this.config.ICONS || ICONS
 
 		this.BUTTON_COLOR_ON = '#0b730d'
 		this.BUTTON_COLOR_OFF = '#0000ff'
 		this.BUTTON_COLOR_ERROR = '#ff00ff'
 
-		this.feedbackKeys = []
+		// Store list of feedback ids to check all feedbacks on demand.
+		this.feedbackIds = []
+		// Store result of last action: { successful, browserConfig }
+		// Was the action/http-request succesful?
+		// What config was generated as a result in the target browser?
 		this.lastAction = {}
 	}
 
@@ -82,22 +79,24 @@ class instance extends instance_skel {
 		if (!this.config.download_routes) return
 
 		const routesUrl = 'https://ws.myapplause.app/rc/companion/routes'
-		// TODO: what happens if no internet?
 		new Client()
 			.get(routesUrl, (data, response) => {
 				const successful = 200 <= response.statusCode && response.statusCode < 300
-				if (!successful) {
-					this.log('warn', 'Could not download new MyApplause Control config.')
+				if (successful) {
+					try {
+						this.config.ROUTES = JSON.parse(data.toString())
+						this.log(
+							'info',
+							'Succesfuly downloaded MyApplause Control config. Changes will only be effective after you restarted Companion.'
+						)
+					} catch (error) {
+						this.log('warn', 'Could not parse new MyApplause Control config.')
+					}
 				} else {
-					this.config.ROUTES = JSON.parse(data.toString())
-					this.saveConfig()
-					this.log(
-						'info',
-						'Succesfuly downloaded MyApplause Control config. Changes will only be effective after you restarted Companion.'
-					)
+					this.log('warn', 'Could not download new MyApplause Control config.')
 				}
 			})
-			.on('error', function (err) {
+			.on('error', (error) => {
 				this.log('warn', 'Could not download new MyApplause Control config.')
 			})
 
@@ -105,20 +104,25 @@ class instance extends instance_skel {
 		new Client()
 			.get(iconsUrl, (data, response) => {
 				const successful = 200 <= response.statusCode && response.statusCode < 300
-				if (!successful) {
-					this.log('warn', 'Could not download new MyApplause Control icons.')
+				if (successful) {
+					try {
+						this.config.ICONS = JSON.parse(data.toString())
+						this.log(
+							'info',
+							'Succesfuly downloaded MyApplause Control icons. Changes will only be effective after you restarted Companion.'
+						)
+					} catch (error) {
+						this.log('warn', 'Could not parse new MyApplause Control icons.')
+					}
 				} else {
-					this.config.ICONS = JSON.parse(data.toString())
-					this.saveConfig()
-					this.log(
-						'info',
-						'Succesfuly downloaded MyApplause Control icons. Changes will only be effective after you restarted Companion.'
-					)
+					this.log('warn', 'Could not download new MyApplause Control icons.')
 				}
 			})
-			.on('error', function (err) {
+			.on('error', (error) => {
 				this.log('warn', 'Could not download new MyApplause Control icons.')
 			})
+
+		this.saveConfig()
 	}
 
 	getMyApplauseStateAndCheckFeedbacks = () => {
@@ -129,37 +133,42 @@ class instance extends instance_skel {
 		if (!url.endsWith('/')) url = url + '/'
 		url = url + 'config/dump'
 		// TODO: what happens if no internet?
-		new Client().get(url, (data, response) => {
-			let successful = 200 <= response.statusCode && response.statusCode < 300
-			let browserConfig
-			try {
-				browserConfig = JSON.parse(data.toString())
-				this.lastAction = {
-					browserConfig,
-					successful,
+		new Client()
+			.get(url, (data, response) => {
+				let successful = 200 <= response.statusCode && response.statusCode < 300
+				let browserConfig
+				try {
+					browserConfig = JSON.parse(data.toString())
+					this.lastAction = {
+						browserConfig,
+						successful,
+					}
+					this.checkAllFeedbacks()
+				} catch (error) {
+					const regex = /\/rc\/pid\/(\w+)\/(\w+)\//
+					const match = url.match(regex)
+					if (match) {
+						const pid = match[1]
+						const eventId = match[2]
+						const panoramaUrl = `https://macs.myapplause.app/id/${eventId}/panorama?pid=${pid}`
+						this.log(
+							'warn',
+							`Initial MyApplause state was not transmitted. This URL needs to be open in a browser: ${panoramaUrl}`
+						)
+					} else {
+						this.log(
+							'warn',
+							'Initial MyApplause state was not transmitted. Is the MyApplause Panorama opened in a browser?'
+						)
+					}
 				}
-				this.checkAllFeedbacks()
-			} catch (error) {
-				const regex = /\/rc\/pid\/(\w+)\/(\w+)\//
-				const match = url.match(regex)
-				if (match) {
-					const pid = match[1]
-					const eventId = match[2]
-					const panoramaUrl = `https://macs.myapplause.app/id/${eventId}/panorama?pid=${pid}`
-					this.log(
-						'warn',
-						`Initial MyApplause state was not transmitted. This URL needs to be open in a browser: ${panoramaUrl}`
-					)
-				} else {
-					this.log(
-						'warn',
-						'Initial MyApplause state was not transmitted. Is the MyApplause Panorama opened in a browser?'
-					)
-				}
-			}
 
-			this.status(successful ? this.STATUS_OK : this.STATUS_ERROR)
-		})
+				this.status(successful ? this.STATUS_OK : this.STATUS_ERROR)
+			})
+			.on('error', (error) => {
+				this.log('warn', 'Initial MyApplause state was not transmitted. Are you connected to the internet?')
+				this.status(this.STATUS_ERROR)
+			})
 	}
 
 	config_fields = () => {

@@ -4,7 +4,6 @@ const Client = require('node-rest-client').Client
 module.exports = {
 	initActions() {
 		this.actionDefinitions = {}
-		this.actionIdToPath = {}
 
 		const parseRoutes = (node, cmdPath = []) => {
 			// Recursively parse ROUTES.json.
@@ -58,9 +57,9 @@ module.exports = {
 					const func = new Function('n', 'return ' + commands[0])
 					// If this is a toggle command, register which configuration option is toggled.
 					const isToggleFor = key === 'toggle' && commands[0].includes('TOGGLES: ') ? func().TOGGLES : ''
-					const actionDefinition = {
+					this.actionDefinitions[actionId] = {
 						isToggleFor: isToggleFor,
-						actionId: actionId,
+						id: actionId,
 						label: label,
 						options: options,
 						func: func,
@@ -69,7 +68,6 @@ module.exports = {
 						presetConfigurations: presetConfigurations,
 						cmdPath: cmdPath_,
 					}
-					this.actionDefinitions[actionId] = actionDefinition
 				}
 			}
 		}
@@ -97,7 +95,6 @@ module.exports = {
 
 		new Client()
 			.get(url, (data, response) => {
-				// TODO: wenn kein internet: response not defined?
 				const successful = 200 <= response.statusCode && response.statusCode < 300
 				this.status(successful ? this.STATUS_OK : this.STATUS_ERROR)
 				try {
@@ -114,7 +111,7 @@ module.exports = {
 				this.checkAllFeedbacks()
 			})
 			.on('error', (error) => {
-				this.status(this.STATUS_ERROR, response.statusCode.code)
+				this.status(this.STATUS_ERROR)
 				this.lastAction = {
 					browserConfig: {},
 					successful: false,

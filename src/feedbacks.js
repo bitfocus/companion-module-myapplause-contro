@@ -1,9 +1,10 @@
 module.exports = {
 	initFeedbacks() {
+		// Loop over actionDefinitions to generate corresponding feedbacks.
 		const feedbacks = {}
-
 		for (const [actionId, actionDefinition] of Object.entries(this.actionDefinitions)) {
 			if (actionDefinition.isToggleFor) {
+				// Generate feedback for toggle action.
 				feedbacks[actionId] = {
 					label: actionId,
 					description: actionId,
@@ -11,7 +12,6 @@ module.exports = {
 					callback: (feedback, bank) => {
 						const { successful, browserConfig } = this.lastAction
 						if (successful) {
-							// TODO
 							const toggledConfigurationOption = actionDefinition.isToggleFor
 							const optionIsOn = browserConfig[toggledConfigurationOption]
 							return { bgcolor: optionIsOn ? this.button_color_on : this.button_color_off }
@@ -21,6 +21,7 @@ module.exports = {
 					},
 				}
 			} else {
+				// Generate feedback for non-toggle action.
 				feedbacks[actionId] = {
 					label: actionId,
 					description: actionId,
@@ -28,8 +29,6 @@ module.exports = {
 					callback: (feedback, bank) => {
 						const { successful, browserConfig } = this.lastAction
 						if (successful) {
-							// TODO
-
 							const params = Object.keys(feedback.options || {})
 								.sort()
 								.map((key) => feedback.options[key])
@@ -37,8 +36,11 @@ module.exports = {
 							const expectedConfigMatchesBrowserConfig = Object.keys(expectedConfig).every(
 								(key) => expectedConfig[key] == browserConfig[key]
 							)
-							if (!expectedConfigMatchesBrowserConfig) return
-							return { bgcolor: this.button_color_on }
+							if (expectedConfigMatchesBrowserConfig) {
+								return { bgcolor: this.button_color_on }
+							} else {
+								return
+							}
 						} else {
 							return { bgcolor: this.button_color_error }
 						}
@@ -47,9 +49,9 @@ module.exports = {
 			}
 		}
 		this.setFeedbackDefinitions(feedbacks)
-		this.feedbackKeys = Object.keys(feedbacks)
+		this.feedbackIds = Object.keys(feedbacks)
 	},
 	checkAllFeedbacks() {
-		this.feedbackKeys.forEach((key) => this.checkFeedbacks(key))
+		this.feedbackIds.forEach((key) => this.checkFeedbacks(key))
 	},
 }
