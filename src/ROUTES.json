@@ -250,7 +250,7 @@
         "hometeam": {
             "on": {
                 "commands": [
-                    "{EMOJI_NO_HOME: 1}"
+                    "{EMOJI_NO_HOME: 0}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
@@ -258,7 +258,7 @@
             },
             "off": {
                 "commands": [
-                    "{EMOJI_NO_HOME: 0}"
+                    "{EMOJI_NO_HOME: 1}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
@@ -278,7 +278,7 @@
         "awayteam": {
             "on": {
                 "commands": [
-                    "{EMOJI_NO_GUEST: 1}"
+                    "{EMOJI_NO_GUEST: 0}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
@@ -286,7 +286,7 @@
             },
             "off": {
                 "commands": [
-                    "{EMOJI_NO_GUEST: 0}"
+                    "{EMOJI_NO_GUEST: 1}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
