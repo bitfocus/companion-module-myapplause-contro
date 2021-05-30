@@ -749,7 +749,6 @@
             "tooltip": "",
             "presetConfigurations": {},
             "categories": [
-                "QuickStart"
             ]
         },
         "show": {
@@ -760,7 +759,6 @@
                 "tooltip": "",
                 "presetConfigurations": {},
                 "categories": [
-                    "QuickStart"
                 ]
             },
             "off": {
@@ -770,7 +768,6 @@
                 "tooltip": "",
                 "presetConfigurations": {},
                 "categories": [
-                    "QuickStart"
                 ]
             },
             "toggle": {
@@ -791,19 +788,6 @@
             "tooltip": "",
             "presetConfigurations": {},
             "categories": [
-                "QuickStart"
-            ]
-        }
-    },
-    "viktors": {
-        "showoff": {
-            "commands": [
-                "{EMOJIS_ENABLED: n[0]}"
-            ],
-            "tooltip": "",
-            "presetConfigurations": {},
-            "categories": [
-                "QuickStart"
             ]
         }
     }

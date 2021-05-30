@@ -33,10 +33,15 @@ module.exports = {
 					presetOptions,
 				})
 
+				additionalCategories.forEach((category) => {
+					presets.push({ ...iconPreset, category: `${category} (Icon)` })
+					presets.push({ ...textPreset, category: `${category} (Text)` })
+				})
+
 				const actionName = cmdPath[cmdPath.length - 1]
 				if (actionName === 'on' || actionName === 'off') {
-					presets.push({ ...iconPreset, category: 'NoToggle (Icon)' })
-					presets.push({ ...textPreset, category: 'NoToggle (Text)' })
+					presets.push({ ...iconPreset, category: 'ON_OFF (Icon)' })
+					presets.push({ ...textPreset, category: 'ON_OFF (Text)' })
 				} else {
 					presets.push({ ...iconPreset, category: 'All (Icon)' })
 					presets.push({ ...textPreset, category: 'All (Text)' })
@@ -47,10 +52,6 @@ module.exports = {
 					presets.push(iconPreset)
 					presets.push(textPreset)
 				}
-				additionalCategories.forEach((category) => {
-					presets.push({ ...iconPreset, category: `${category} (Icon)` })
-					presets.push({ ...textPreset, category: `${category} (Text)` })
-				})
 			}
 		}
 
