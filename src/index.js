@@ -93,6 +93,7 @@ class instance extends instance_skel {
 				if (successful) {
 					try {
 						this.config.ROUTES = JSON.parse(data.toString())
+						this.saveConfig()
 						this.log(
 							'info',
 							'Succesfuly downloaded MyApplause Control config. Changes will only be effective after you restarted Companion.'
@@ -115,6 +116,7 @@ class instance extends instance_skel {
 				if (successful) {
 					try {
 						this.config.ICONS = JSON.parse(data.toString())
+						this.saveConfig()
 						this.log(
 							'info',
 							'Succesfuly downloaded MyApplause Control icons. Changes will only be effective after you restarted Companion.'
@@ -129,8 +131,6 @@ class instance extends instance_skel {
 			.on('error', (error) => {
 				this.log('warn', 'Could not download new MyApplause Control icons.')
 			})
-
-		this.saveConfig()
 	}
 
 	getMyApplauseStateAndCheckFeedbacks() {
@@ -186,14 +186,16 @@ class instance extends instance_skel {
 				id: 'info',
 				width: 12,
 				label: 'Information',
-				value: 'Welcome to the https://MyApplause.app Companion module! Click on the question mark in the upper right corner (next to MyApplause Configuration) for Quickstart information! You can contact us at companion@myapplause.app or call +49-69-506075085.',
+				value:
+					'Welcome to the https://MyApplause.app Companion module! Click on the question mark in the upper right corner (next to MyApplause Configuration) for Quickstart information! You can contact us at companion@myapplause.app or call +49-69-506075085.',
 			},
 			{
 				type: 'checkbox',
 				id: 'download_routes',
 				label: 'Update MyApplause presets (icons/commands) on Companion startup (recommended)',
 				width: 12,
-				tooltip: 'The downloaded file is used to generate MyApplause presets (with icons/actions/feedbacks) automatically.',
+				tooltip:
+					'The downloaded file is used to generate MyApplause presets (with icons/actions/feedbacks) automatically.',
 				default: false,
 			},
 			// URL of the MyApplause Server instance.
