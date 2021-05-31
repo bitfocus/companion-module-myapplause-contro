@@ -303,6 +303,46 @@
                 ]
             }
         },
+        "decrement_size_1": {
+            "commands": [
+                "{INCREMENTS: [['EMOJI_MIN_SIZE', -0.02], ['EMOJI_MAX_SIZE', -0.04]]}"
+            ],
+            "tooltip": "",
+            "presetConfigurations": {},
+            "categories": [
+                "QuickStart"
+            ]
+        },
+        "increment_size_1": {
+            "commands": [
+                "{INCREMENTS: [['EMOJI_MIN_SIZE', +0.02], ['EMOJI_MAX_SIZE', +0.04]]}"
+            ],
+            "tooltip": "",
+            "presetConfigurations": {},
+            "categories": [
+                "QuickStart"
+            ]
+        },
+        "decrement_size_10": {
+            "commands": [
+                "{INCREMENTS: [['EMOJI_MIN_SIZE', -0.2], ['EMOJI_MAX_SIZE', -0.4]]}"
+            ],
+            "tooltip": "",
+            "presetConfigurations": {},
+            "categories": [
+                "QuickStart"
+            ]
+        },
+        "increment_size_10": {
+            "commands": [
+                "{INCREMENTS: [['EMOJI_MIN_SIZE', +0.2], ['EMOJI_MAX_SIZE', +0.4]]}"
+            ],
+            "tooltip": "",
+            "presetConfigurations": {},
+            "categories": [
+                "QuickStart"
+            ]
+        },
         "fullscreenvib": {
             "commands": [
                 "{EMOJI_ROW_START: 0, EMOJI_COLUMN_START: 0, EMOJI_ROW_END: 101, EMOJI_COLUMN_END: 101}",
@@ -748,8 +788,7 @@
             ],
             "tooltip": "",
             "presetConfigurations": {},
-            "categories": [
-            ]
+            "categories": []
         },
         "show": {
             "on": {
@@ -758,8 +797,7 @@
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
-                "categories": [
-                ]
+                "categories": []
             },
             "off": {
                 "commands": [
@@ -767,8 +805,7 @@
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
-                "categories": [
-                ]
+                "categories": []
             },
             "toggle": {
                 "commands": [
@@ -787,8 +824,7 @@
             ],
             "tooltip": "",
             "presetConfigurations": {},
-            "categories": [
-            ]
+            "categories": []
         }
     }
 }
