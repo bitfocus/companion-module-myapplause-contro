@@ -13,6 +13,11 @@ If the instance status is **`ERROR`** then probably the Panorama you want to con
 > The Panorama has to be open so that feedback can be provided and the the background color of buttons can be set. The default are:
 > green=Active/ON, blue=INACTIVE/OFF, pink=ERROR
 
+Buttons that set an area take 4 parameters: x_start, y_start, x_end, y_end. Counting starts in the top left corner and takes values from 1 to 101. This means:
+
+- fullscreen is 1,1,101,101
+- top left quadrant is 1,1,51,51
+
 > **Note:** If a button press results in an error (e.g. because it has invalid parameters), all MyApplause buttons become pink. -> press any correctly working MyApplause button to acknowledge and set all colors correctly again.
 
 -> When you customize buttons make sure to put the **same parameters** in action and **feedback**!
