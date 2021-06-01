@@ -78,7 +78,7 @@ class instance extends instance_skel {
 			this.button_color_error == null ? hexStringToRgb(this.BUTTON_COLOR_ERROR) : this.button_color_error
 	}
 
-	downloadNewConfig() {
+	async downloadNewConfig() {
 		// Download new ROUTES config which is used to generate actions, presets,
 		// feedbacks dynamically.
 		// New ROUTES is only used after restart of companion.
@@ -87,50 +87,50 @@ class instance extends instance_skel {
 		if (!this.config.download_routes) return
 
 		const routesUrl = 'https://ws.myapplause.app/rc/companion/routes'
-		new Client()
-			.get(routesUrl, (data, response) => {
-				const successful = 200 <= response.statusCode && response.statusCode < 300
-				if (successful) {
-					try {
-						this.config.ROUTES = JSON.parse(data.toString())
-						this.saveConfig()
-						this.log(
-							'info',
-							'Succesfuly downloaded MyApplause Control config. Changes will only be effective after you restarted Companion.'
-						)
-					} catch (error) {
-						this.log('warn', 'Could not parse new MyApplause Control config.')
-					}
-				} else {
-					this.log('warn', 'Could not download new MyApplause Control config.')
-				}
-			})
-			.on('error', (error) => {
-				this.log('warn', 'Could not download new MyApplause Control config.')
-			})
-
+		const routesVersionUrl = 'https://ws.myapplause.app/rc/companion/routes/version'
 		const iconsUrl = 'https://ws.myapplause.app/rc/companion/icons'
-		new Client()
-			.get(iconsUrl, (data, response) => {
-				const successful = 200 <= response.statusCode && response.statusCode < 300
-				if (successful) {
-					try {
-						this.config.ICONS = JSON.parse(data.toString())
-						this.saveConfig()
-						this.log(
-							'info',
-							'Succesfuly downloaded MyApplause Control icons. Changes will only be effective after you restarted Companion.'
-						)
-					} catch (error) {
-						this.log('warn', 'Could not parse new MyApplause Control icons.')
-					}
+		const iconsVersionUrl = 'https://ws.myapplause.app/rc/companion/icons/version'
+		try {
+			const newRoutesVersion = await get(routesVersionUrl)
+			if (this.config.ROUTES_VERSION || 0 < newRoutesVersion) {
+				const newROUTES = await get(routesUrl)
+				if (newROUTES['$fileFormat'] === 1) {
+					this.config.ROUTES = newROUTES
+					this.config.ROUTES_VERSION = newRoutesVersion
+					this.saveConfig()
+					this.log(
+						'info',
+						'Succesfuly downloaded MyApplause Control config. Changes will only be effective after you restarted Companion.'
+					)
 				} else {
-					this.log('warn', 'Could not download new MyApplause Control icons.')
+					// TODO: log info
 				}
-			})
-			.on('error', (error) => {
-				this.log('warn', 'Could not download new MyApplause Control icons.')
-			})
+			}
+
+			const newIconsVersion = await get(iconsVersionUrl)
+			if (this.config.ICONS_VERSION || 0 < newIconsVersion) {
+				const newICONS = await get(iconsUrl)
+				if (newICONS['$fileFormat'] === 1) {
+					this.config.ICONS = newICONS
+					this.config.ICONS_VERSION = newIconsVersion
+					this.saveConfig()
+					this.log(
+						'info',
+						'Succesfuly downloaded MyApplause Control icons. Changes will only be effective after you restarted Companion.'
+					)
+				} else {
+					// TODO: log info
+				}
+			}
+		} catch (error) {
+			if (error.message === 'JSON') {
+				this.log('warn', 'Could not parse new MyApplause Control config.')
+			} else if (error.message === 'HTTP_STATUS_CODE') {
+				this.log('warn', 'Could not download new MyApplause Control config.')
+			} else {
+				this.log('warn', 'Could not download new MyApplause Control config. Are you connected to the internet?')
+			}
+		}
 	}
 
 	getMyApplauseStateAndCheckFeedbacks() {
@@ -140,7 +140,6 @@ class instance extends instance_skel {
 		let url = this.config.url
 		if (!url.endsWith('/')) url = url + '/'
 		url = url + 'config/dump'
-		// TODO: what happens if no internet?
 		new Client()
 			.get(url, (data, response) => {
 				let successful = 200 <= response.statusCode && response.statusCode < 300
@@ -241,6 +240,28 @@ function isValidHttpUrl(string) {
 		return false
 	}
 	return url.protocol === 'http:' || url.protocol === 'https:'
+}
+
+function get(url) {
+	return new Promise((resolve, reject) => {
+		new Client()
+			.get(url, (data, response) => {
+				const successful = 200 <= response.statusCode && response.statusCode < 300
+
+				if (successful) {
+					try {
+						resolve(JSON.parse(data.toString()))
+					} catch (error) {
+						reject(new Error('JSON'))
+					}
+				} else {
+					reject(new Error('HTTP_STATUS_CODE'))
+				}
+			})
+			.on('error', (error) => {
+				reject(new Error('ERROR'))
+			})
+	})
 }
 
 exports = module.exports = instance
