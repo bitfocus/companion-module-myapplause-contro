@@ -212,7 +212,14 @@
                 "{MAX_EMOJI_COUNT: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "50": [
+                    50
+                ],
+                "1000": [
+                    1000
+                ]
+            },
             "categories": []
         },
         "maxPerRound": {
@@ -220,7 +227,14 @@
                 "{MAX_EMOJI_PER_ROUND_COUNT: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "2": [
+                    2
+                ],
+                "16": [
+                    16
+                ]
+            },
             "categories": []
         },
         "size": {
@@ -395,7 +409,14 @@
                 "{MESSAGES_FONT_SIZE: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "2.5": [
+                    2.5
+                ],
+                "10": [
+                    10
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -405,7 +426,14 @@
                 "{MESSAGES_TEXT_OUTLINE: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "0": [
+                    0
+                ],
+                "3": [
+                    3
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -415,7 +443,17 @@
                 "{MESSAGES_TEXT_SHADOW: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "0": [
+                    0
+                ],
+                "10": [
+                    10
+                ],
+                "20": [
+                    20
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -425,7 +463,17 @@
                 "{MESSAGES_TEXT_STROKE: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "0": [
+                    0
+                ],
+                "1": [
+                    1
+                ],
+                "3": [
+                    3
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -435,7 +483,17 @@
                 "{MESSAGES_MARGIN_BOTTOM: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "0": [
+                    0
+                ],
+                "1": [
+                    1
+                ],
+                "3": [
+                    3
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -445,7 +503,17 @@
                 "{MESSAGES_FONT_WEIGHT: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "800": [
+                    800
+                ],
+                "400": [
+                    400
+                ],
+                "100": [
+                    100
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -455,7 +523,17 @@
                 "{MESSAGES_DELAY: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "1000": [
+                    1000
+                ],
+                "3000": [
+                    3000
+                ],
+                "5000": [
+                    5000
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -513,7 +591,17 @@
                 "{VIDEO_SPEED: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "0.09": [
+                    0.09
+                ],
+                "0.36": [
+                    0.36
+                ],
+                "0.04": [
+                    0.04
+                ]
+            },
             "categories": []
         },
         "on": {
@@ -597,7 +685,11 @@
                 "{PANORAMA_BG_COLOR: '#' + n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "eab500": [
+                    "eab500"
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -607,7 +699,11 @@
                 "{PANORAMA_BG_COLOR: n[0]}"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "trans-parent": [
+                    "transprent"
+                ]
+            },
             "categories": []
         },
         "green": {
@@ -635,7 +731,20 @@
                 "[33, [2**(n[0]-1), 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "19": [
+                    19
+                ],
+                "20": [
+                    20
+                ],
+                "21": [
+                    21
+                ],
+                "22": [
+                    22
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -645,7 +754,20 @@
                 "[33, [0, 2**(n[0]-1), 0, 0]]"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "19": [
+                    19
+                ],
+                "20": [
+                    20
+                ],
+                "21": [
+                    21
+                ],
+                "22": [
+                    22
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -665,7 +787,20 @@
                 "[30, [2**(n[0]-1), 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "19": [
+                    19
+                ],
+                "20": [
+                    20
+                ],
+                "21": [
+                    21
+                ],
+                "22": [
+                    22
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -695,7 +830,17 @@
                 "[101, [n[0], 0, 0, 0]]"
             ],
             "tooltip": "",
-            "presetConfigurations": {},
+            "presetConfigurations": {
+                "1": [
+                    1
+                ],
+                "2": [
+                    2
+                ],
+                "3": [
+                    3
+                ]
+            },
             "categories": [
                 "QuickStart"
             ]
@@ -827,6 +972,6 @@
             "categories": []
         }
     },
-    "$version": 202106010950,
+    "$version": 202106011125,
     "$fileFormat": 1
 }
