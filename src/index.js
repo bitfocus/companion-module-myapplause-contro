@@ -92,7 +92,7 @@ class instance extends instance_skel {
 		const iconsVersionUrl = 'https://ws.myapplause.app/rc/companion/icons/version'
 		try {
 			const newRoutesVersion = await get(routesVersionUrl)
-			if (this.config.ROUTES_VERSION || 0 < newRoutesVersion) {
+			if ((this.config.ROUTES_VERSION || 0) < newRoutesVersion) {
 				const newROUTES = await get(routesUrl)
 				if (newROUTES['$fileFormat'] === 1) {
 					this.config.ROUTES = newROUTES
@@ -108,7 +108,7 @@ class instance extends instance_skel {
 			}
 
 			const newIconsVersion = await get(iconsVersionUrl)
-			if (this.config.ICONS_VERSION || 0 < newIconsVersion) {
+			if ((this.config.ICONS_VERSION || 0) < newIconsVersion) {
 				const newICONS = await get(iconsUrl)
 				if (newICONS['$fileFormat'] === 1) {
 					this.config.ICONS = newICONS
