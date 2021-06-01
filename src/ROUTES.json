@@ -826,5 +826,7 @@
             "presetConfigurations": {},
             "categories": []
         }
-    }
+    },
+    "$version": 202106010950,
+    "$fileFormat": 1
 }
