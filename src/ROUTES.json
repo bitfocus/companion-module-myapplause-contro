@@ -264,7 +264,7 @@
         "hometeam": {
             "on": {
                 "commands": [
-                    "{EMOJI_NO_HOME: 0}"
+                    "{EMOJI_HOME: 1}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
@@ -272,7 +272,7 @@
             },
             "off": {
                 "commands": [
-                    "{EMOJI_NO_HOME: 1}"
+                    "{EMOJI_HOME: 0}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
@@ -280,7 +280,7 @@
             },
             "toggle": {
                 "commands": [
-                    "{TOGGLES: ['EMOJI_NO_HOME']}"
+                    "{TOGGLES: ['EMOJI_HOME']}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
@@ -292,7 +292,7 @@
         "awayteam": {
             "on": {
                 "commands": [
-                    "{EMOJI_NO_GUEST: 0}"
+                    "{EMOJI_GUEST: 1}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
@@ -300,7 +300,7 @@
             },
             "off": {
                 "commands": [
-                    "{EMOJI_NO_GUEST: 1}"
+                    "{EMOJI_GUEST: 0}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
@@ -308,7 +308,7 @@
             },
             "toggle": {
                 "commands": [
-                    "{TOGGLES: ['EMOJI_NO_GUEST']}"
+                    "{TOGGLES: ['EMOJI_GUEST']}"
                 ],
                 "tooltip": "",
                 "presetConfigurations": {},
@@ -972,6 +972,6 @@
             "categories": []
         }
     },
-    "$version": 202106011125,
+    "$version": 202106011338,
     "$fileFormat": 1
 }
