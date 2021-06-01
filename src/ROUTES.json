@@ -207,6 +207,23 @@
                 "QuickStart"
             ]
         },
+        "tune_multi": {
+            "commands": [
+                "{INCREMENTS: [['EMOJI_MULTIPLIER', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement emoji multiplier",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
+        },
         "maxTotal": {
             "commands": [
                 "{MAX_EMOJI_COUNT: n[0]}"
@@ -222,6 +239,23 @@
             },
             "categories": []
         },
+        "tune_maxTotal": {
+            "commands": [
+                "{INCREMENTS: [['MAX_EMOJI_COUNT', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement maxTotal",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
+        },
         "maxPerRound": {
             "commands": [
                 "{MAX_EMOJI_PER_ROUND_COUNT: n[0]}"
@@ -236,6 +270,23 @@
                 ]
             },
             "categories": []
+        },
+        "tune_maxPerRound": {
+            "commands": [
+                "{INCREMENTS: [['MAX_EMOJI_PER_ROUND_COUNT', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement maxPerRound",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
         },
         "size": {
             "commands": [
@@ -421,6 +472,23 @@
                 "QuickStart"
             ]
         },
+        "tune_fontSize": {
+            "commands": [
+                "{INCREMENTS: [['MESSAGES_FONT_SIZE', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement fontSize",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
+        },
         "outline": {
             "commands": [
                 "{MESSAGES_TEXT_OUTLINE: n[0]}"
@@ -432,6 +500,23 @@
                 ],
                 "3": [
                     3
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
+        },
+        "tune_outline": {
+            "commands": [
+                "{INCREMENTS: [['MESSAGES_TEXT_OUTLINE', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement outline",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
                 ]
             },
             "categories": [
@@ -458,6 +543,23 @@
                 "QuickStart"
             ]
         },
+        "tune_shadow": {
+            "commands": [
+                "{INCREMENTS: [['MESSAGES_TEXT_SHADOW', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement shadow",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
+        },
         "stroke": {
             "commands": [
                 "{MESSAGES_TEXT_STROKE: n[0]}"
@@ -472,6 +574,23 @@
                 ],
                 "3": [
                     3
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
+        },
+        "tune_stroke": {
+            "commands": [
+                "{INCREMENTS: [['MESSAGES_TEXT_STROKE', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement stroke",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
                 ]
             },
             "categories": [
@@ -498,6 +617,23 @@
                 "QuickStart"
             ]
         },
+        "tune_distance": {
+            "commands": [
+                "{INCREMENTS: [['MESSAGES_MARGIN_BOTTOM', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement distance",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
+        },
         "weight": {
             "commands": [
                 "{MESSAGES_FONT_WEIGHT: n[0]}"
@@ -518,6 +654,23 @@
                 "QuickStart"
             ]
         },
+        "tune_weight": {
+            "commands": [
+                "{INCREMENTS: [['MESSAGES_FONT_WEIGHT', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement weight",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
+        },
         "delay": {
             "commands": [
                 "{MESSAGES_DELAY: n[0]}"
@@ -532,6 +685,23 @@
                 ],
                 "5000": [
                     5000
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
+        },
+        "tune_delay": {
+            "commands": [
+                "{INCREMENTS: [['MESSAGES_DELAY', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement delay",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
                 ]
             },
             "categories": [
@@ -603,6 +773,23 @@
                 ]
             },
             "categories": []
+        },
+        "tune_speed": {
+            "commands": [
+                "{INCREMENTS: [['VIDEO_SPEED', +n[0]]]}"
+            ],
+            "tooltip": "increment/decrement speed",
+            "presetConfigurations": {
+                "+0.02": [
+                    0.02
+                ],
+                "-0.02": [
+                    -0.02
+                ]
+            },
+            "categories": [
+                "QuickStart"
+            ]
         },
         "on": {
             "commands": [
@@ -972,6 +1159,6 @@
             "categories": []
         }
     },
-    "$version": 202106011338,
+    "$version": 202106012156,
     "$fileFormat": 1
 }
