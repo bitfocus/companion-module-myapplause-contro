@@ -184,7 +184,7 @@ class instance extends instance_skel {
 				type: 'text',
 				id: 'info',
 				width: 12,
-				label: 'Information',
+				label: `Version Routes: ${this.config.ROUTES_VERSION} / Icons: ${this.config.ICONS_VERSION}`,
 				value:
 					'Welcome to the https://MyApplause.app Companion module! Click on the question mark in the upper right corner (next to MyApplause Configuration) for Quickstart information! You can contact us at companion@myapplause.app or call +49-69-506075085.',
 			},
