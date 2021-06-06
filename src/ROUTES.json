@@ -1,5 +1,5 @@
 {
-  "$version": 202106021050,
+  "$version": 202106060758,
   "$fileFormat": 1,
   "image": {
     "toggle": {
@@ -515,8 +515,7 @@
       ],
       "tooltip": "",
       "presetConfigurations": {},
-      "categories": [
-      ]
+      "categories": []
     }
   },
   "msg": {
@@ -1112,6 +1111,34 @@
       "toggle": {
         "commands": [
           "{TOGGLES: ['CONFIG_DISPLAY_ENABLED']}"
+        ],
+        "tooltip": "",
+        "presetConfigurations": {},
+        "categories": [
+          "QuickStart"
+        ]
+      }
+    },
+    "lock": {
+      "on": {
+        "commands": [
+          "{LOCKED: 1}"
+        ],
+        "tooltip": "",
+        "presetConfigurations": {},
+        "categories": []
+      },
+      "off": {
+        "commands": [
+          "{LOCKED: 0}"
+        ],
+        "tooltip": "",
+        "presetConfigurations": {},
+        "categories": []
+      },
+      "toggle": {
+        "commands": [
+          "{TOGGLES: ['LOCKED']}"
         ],
         "tooltip": "",
         "presetConfigurations": {},
