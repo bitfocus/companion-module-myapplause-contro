@@ -24,10 +24,18 @@ class instance extends instance_skel {
 			...feedbacks,
 		})
 
-		// Use either newer downloaded ROUTES/ICONS or use
+		// Use either a newer downloaded ROUTES/ICONS or use
 		// the one delivered with the module.
-		this.routes = this.config.ROUTES || ROUTES
-		this.icons = this.config.ICONS || ICONS
+		if (this.config.ROUTES && this.config.ROUTES['$version'] > ROUTES['$version']) {
+			this.routes = this.config.ROUTES
+		} else {
+			this.routes = ROUTES
+		}
+		if (this.config.ICONS && this.config.ICONS['$version'] > ICONS['$version']) {
+			this.icons = this.config.ICONS
+		} else {
+			this.icons = ICONS
+		}
 
 		this.BUTTON_COLOR_ON = '#0b730d'
 		this.BUTTON_COLOR_OFF = '#0000ff'
@@ -92,11 +100,10 @@ class instance extends instance_skel {
 		const iconsVersionUrl = 'https://ws.myapplause.app/rc/companion/icons/version'
 		try {
 			const newRoutesVersion = await get(routesVersionUrl)
-			if ((this.config.ROUTES_VERSION || 0) < newRoutesVersion) {
+			if ((this.routes['$version'] || 0) < newRoutesVersion) {
 				const newROUTES = await get(routesUrl)
 				if (newROUTES['$fileFormat'] === 1) {
 					this.config.ROUTES = newROUTES
-					this.config.ROUTES_VERSION = newRoutesVersion
 					this.saveConfig()
 					this.log(
 						'info',
@@ -108,11 +115,10 @@ class instance extends instance_skel {
 			}
 
 			const newIconsVersion = await get(iconsVersionUrl)
-			if ((this.config.ICONS_VERSION || 0) < newIconsVersion) {
+			if ((this.icons['$version'] || 0) < newIconsVersion) {
 				const newICONS = await get(iconsUrl)
 				if (newICONS['$fileFormat'] === 1) {
 					this.config.ICONS = newICONS
-					this.config.ICONS_VERSION = newIconsVersion
 					this.saveConfig()
 					this.log(
 						'info',

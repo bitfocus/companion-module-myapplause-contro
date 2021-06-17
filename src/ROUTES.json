@@ -1,6 +1,90 @@
 {
-  "$version": 202106060758,
+  "$version": 202106171030,
   "$fileFormat": 1,
+  "iframe": {
+    "toggle": {
+      "commands": [
+        "{TOGGLES: ['SHOW_IFRAME']}"
+      ],
+      "tooltip": "",
+      "presetConfigurations": {},
+      "categories": [
+        "QuickStart"
+      ]
+    },
+    "on": {
+      "commands": [
+        "{SHOW_IFRAME: 1}"
+      ],
+      "tooltip": "",
+      "presetConfigurations": {},
+      "categories": []
+    },
+    "off": {
+      "commands": [
+        "{SHOW_IFRAME: 0}"
+      ],
+      "tooltip": "",
+      "presetConfigurations": {},
+      "categories": []
+    },
+    "wordcloud": {
+      "toggle": {
+        "commands": [
+          "{TOGGLES: ['SHOW_WORDCLOUD']}"
+        ],
+        "tooltip": "",
+        "presetConfigurations": {},
+        "categories": [
+          "QuickStart"
+        ]
+      },
+      "on": {
+        "commands": [
+          "{SHOW_WORDCLOUD: 1, MESSAGES_ENABLED: 0}"
+        ],
+        "tooltip": "",
+        "presetConfigurations": {},
+        "categories": []
+      },
+      "off": {
+        "commands": [
+          "{SHOW_WORDCLOUD: 0,  MESSAGES_ENABLED: 1}"
+        ],
+        "tooltip": "",
+        "presetConfigurations": {},
+        "categories": []
+      }
+    },
+    "vote": {
+      "toggle": {
+        "commands": [
+          "{TOGGLES: ['SHOW_VOTE']}"
+        ],
+        "tooltip": "",
+        "presetConfigurations": {},
+        "categories": [
+          "QuickStart"
+        ]
+      },
+      "on": {
+        "commands": [
+          "{SHOW_VOTE: 1, MESSAGES_ENABLED: 0}"
+        ],
+        "tooltip": "",
+        "presetConfigurations": {},
+        "categories": []
+      },
+      "off": {
+        "commands": [
+          "{SHOW_VOTE: 0,  MESSAGES_ENABLED: 1}"
+        ],
+        "tooltip": "",
+        "presetConfigurations": {},
+        "categories": []
+      }
+    }
+  },
   "image": {
     "toggle": {
       "commands": [
@@ -450,6 +534,23 @@
       ],
       "tooltip": "",
       "presetConfigurations": {},
+      "categories": [
+        "QuickStart"
+      ]
+    },
+    "tune_left": {
+      "commands": [
+        "{INCREMENTS: [['VIDEO_STRIPE_COLUMN_START', +n[0]]]}"
+      ],
+      "tooltip": "increment/decrement VIDEO_STRIPE_COLUMN_START",
+      "presetConfigurations": {
+        "+": [
+          1
+        ],
+        "-": [
+          -1
+        ]
+      },
       "categories": [
         "QuickStart"
       ]
